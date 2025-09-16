@@ -61,7 +61,7 @@ elmo-hikes/
 ## Contributors
 - **Nathan Hilario** - BCIT CST Student with a passion for badminton, anime, and valorant. Fun fact: I watched 100+ anime, and read 50+ manga/manhwa.
 - **Cedrik** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: loves photography and has wasted alot of money on diffrent gear.
-- Kyle - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves fishing and working on my car.
+- **Kyle** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves fishing and working on my car.
 - **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 ---
