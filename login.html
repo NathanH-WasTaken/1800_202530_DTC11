@@ -1,5 +1,102 @@
-<h1>Good job, you found me!</h1>
-<h2>Click link below for reward!</h2>
-<a class="text-2xl" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-  >Hi, Click Me!</a
->
+<!doctype html>
+<html class="h-full bg-gray-900">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign in — Your Company</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<nav class="bg-gray-500">
+  <div class="flex text-[20px]">
+    <div class="">
+      <img src="images/HQLogo.png" class="h-18 w-18" />
+    </div>
+    <div class="">
+      <a href="index.html" class="inline-block hover:bg-gray-600 px-10 py-5"><b>Health Quest</b></a>
+    </div>
+    <div class="">
+      <a href="" class="inline-block hover:bg-gray-600 px-10 py-5">Mental</a>
+    </div>
+    <div class="">
+      <a href="" class="inline-block hover:bg-gray-600 px-10 py-5">Physical</a>
+    </div>
+    <div class="ml-auto flex items-center">
+      <a href="./login.html" class="inline-block hover:bg-gray-600 px-5 py-3">LOG IN</a>
+      <a href="" class="inline-block hover:bg-gray-600 px-5 py-3">
+        <img src="images/settings.png" class="h-10 w-10" />
+      </a>
+    </div>
+  </div>
+</nav>
+
+<body class="h-full">
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <img src="images/HQLogo.png" alt="Your Company" class="mx-auto h-16 w-16" />
+      <h2 class="mt-10 text-center text-2xl leading-9 font-bold tracking-tight text-white">Sign in to your account</h2>
+    </div>
+
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form action="#" method="POST" class="space-y-6">
+        <div>
+          <label for="email" class="block text-sm leading-6 font-medium text-gray-100">Email address</label>
+          <div class="mt-2">
+            <input id="email" name="email" type="email" required autocomplete="email"
+              class="block w-full rounded-md bg-white/5 px-3 py-2 text-base text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm" />
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="password" class="block text-sm leading-6 font-medium text-gray-100">Password</label>
+            <div class="text-sm">
+              <a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300">Forgot password?</a>
+            </div>
+          </div>
+          <div class="mt-2">
+            <input id="password" name="password" type="password" required autocomplete="current-password"
+              class="block w-full rounded-md bg-white/5 px-3 py-2 text-base text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm" />
+          </div>
+        </div>
+
+        <div>
+          <button type="submit"
+            class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            Sign in
+          </button>
+        </div>
+      </form>
+
+      <p class="mt-10 text-center text-sm leading-6 text-gray-400">
+        Not a member?
+        <a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300">Sign Up</a>
+      </p>
+    </div>
+  </div>
+</body>
+<footer class="bg-gray-500 flex">
+  <div class="basis-4/5">
+    <div class="flex mx-10 pt-10 pb-5 px-10 gap-4 items-center">
+      <img class="w-15 h-15" src="./images/HQLogo.png" alt="" />
+      <h3 class="font-serif font-semibold">Health Quest</h3>
+    </div>
+    <div class="mx-20">
+      <p class="text-justify">
+        Our team 11 is developing a health conscious app to help those
+        trying to find ways to improve their lifestyle by giving tasks or
+        resources in the form of quests with rewards.
+      </p>
+    </div>
+  </div>
+  <div class="basis-1/5">
+    <ul class="flex flex-col gap-2 m-10">
+      <li><a href="./login.html">Sign in</a></li>
+      <li><a href="#">FAQs</a></li>
+      <li><a href="#">Terms & Conditions</a></li>
+      <li><a href="#">Contact us</a></li>
+    </ul>
+  </div>
+</footer>
+
+</html>
