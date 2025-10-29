@@ -6,29 +6,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sign in — Your Company</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Web Components for shared navbar and footer -->
+  <script type="module" src="/src/components/site-navbar.js"></script>
+  <script type="module" src="/src/components/site-footer.js"></script>
 </head>
-<nav class="bg-gray-500">
-  <div class="flex text-[20px]">
-    <div class="">
-      <img src="images/HQLogo.png" class="h-18 w-18" />
-    </div>
-    <div class="">
-      <a href="index.html" class="inline-block hover:bg-gray-600 px-10 py-5"><b>Health Quest</b></a>
-    </div>
-    <div class="">
-      <a href="" class="inline-block hover:bg-gray-600 px-10 py-5">Mental</a>
-    </div>
-    <div class="">
-      <a href="" class="inline-block hover:bg-gray-600 px-10 py-5">Physical</a>
-    </div>
-    <div class="ml-auto flex items-center">
-      <a href="./login.html" class="inline-block hover:bg-gray-600 px-5 py-3">LOG IN</a>
-      <a href="" class="inline-block hover:bg-gray-600 px-5 py-3">
-        <img src="images/settings.png" class="h-10 w-10" />
-      </a>
-    </div>
-  </div>
-</nav>
+
+
+<!-- Navbar -->
+<site-navbar></site-navbar>
 
 <div id="screen1" class="block">
 
@@ -140,29 +125,8 @@
 
 </body>
 
-<footer class="bg-gray-500 flex">
-  <div class="basis-4/5">
-    <div class="flex mx-10 pt-10 pb-5 px-10 gap-4 items-center">
-      <img class="w-15 h-15" src="./images/HQLogo.png" alt="" />
-      <h3 class="font-serif font-semibold">Health Quest</h3>
-    </div>
-    <div class="mx-20">
-      <p class="text-justify">
-        Our team 11 is developing a health conscious app to help those
-        trying to find ways to improve their lifestyle by giving tasks or
-        resources in the form of quests with rewards.
-      </p>
-    </div>
-  </div>
-  <div class="basis-1/5">
-    <ul class="flex flex-col gap-2 m-10">
-      <li><a href="./login.html">Sign in</a></li>
-      <li><a href="#">FAQs</a></li>
-      <li><a href="#">Terms & Conditions</a></li>
-      <li><a href="#">Contact us</a></li>
-    </ul>
-  </div>
-</footer>
+<!-- Footer -->
+<site-footer></site-footer>
 
 
 

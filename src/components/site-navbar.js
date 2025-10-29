@@ -8,7 +8,7 @@ class SiteNavbar extends HTMLElement {
           <img src="images/HQLogo.png" class="h-18 w-18" />
         </div>
         <div class="">
-          <a href="" class="inline-block hover:bg-gray-600 px-10 py-5"
+          <a href="index.html" class="inline-block hover:bg-gray-600 px-10 py-5"
             ><b>Health Quest</b></a
           >
         </div>
@@ -18,7 +18,7 @@ class SiteNavbar extends HTMLElement {
           >
         </div>
         <div class="">
-          <a href="" class="inline-block hover:bg-gray-600 px-10 py-5"
+          <a href="physical.html" class="inline-block hover:bg-gray-600 px-10 py-5"
             >Physical</a
           >
         </div>
