@@ -13,6 +13,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css" />
+
+    <!-- Web Components for shared navbar and footer -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+  </head>
 </head>
 
 <body>
@@ -22,6 +27,11 @@
     <!-- Stuff for body goes here -->
     <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
+
+    <!-- Navbar -->
+    <site-navbar></site-navbar>
+
+    <!-- Main Content -->
     <nav class="bg-gray-500">
         <div class="flex text-[20px]">
             <div class="">
@@ -72,6 +82,9 @@
             </video>
         </div>
     </main>
+
+    <!-- Footer -->
+    <site-footer></site-footer>
     <footer class="bg-gray-500 flex">
         <div class="basis-4/5">
             <div class="flex mx-10 pt-10 pb-5 px-10 gap-4 items-center">
@@ -101,6 +114,8 @@
 </body>
 
     <!-- Link to scripts of your own -->
+    <script type="module" src="./src/main.js"></script>
+  </body>
     <!-- <script type="module" src="./src/main.js"></script> -->
 </body>
 
