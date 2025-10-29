@@ -2,7 +2,7 @@
 
 ## Overview
 
-Health Quest is a client-side JavaScript web application that helps users discover and explore hiking trails. The app displays a curated list of hike trails, each with details such as name, location, difficulty, and an image. Users can browse the list and mark their favorite trails for easy access later.
+Health Quest is a client-side JavaScript web application that helps users grow and track there health both mentally and physically The app displays a curated list of Physical and Mental excercises each with details such as name,difficulty, and instructions . Users can browse the list and set there prefrences based on the level of difficulty they want to work on.
 
 Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing user favorites.
 
@@ -10,9 +10,9 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 
 ## Features
 
-- Browse a list of curated hiking trails with images and details
-- Mark and unmark trails as favorites
-- View a personalized list of favorite hikes
+- Create profile to set prefrences for workouts
+- Mark and unmark workouts as favorites
+- View a personalized list workouts
 - Responsive design for desktop and mobile
 
 ---
@@ -40,16 +40,32 @@ Example:
 ## Project Structure
 
 ```
-elmo-hikes/
+1800_202530_DTC11/
+├── images/
+│   ├── HQLogo.png
+│   ├── Login.jpg
+│   ├── NV01.jpg
+│   └── videoplayback.mp4
 ├── src/
-│   ├── main.js
+│   ├── components/
+│   │    ├── site-footer.js
+│   │    ├── site-navbar.js
+│   ├── authentication.js
+│   ├── firebaseConfig.js
+│   └── main.js
+│   
 ├── styles/
 │   └── style.css
-├── public/
-├── images/
+├── .env
+├── .gitignore/
 ├── index.html
+├── login.html
+├── main.html
+├── package-lock.json
 ├── package.json
+├── physical.html
 ├── README.md
+├── tailwind.config.js
 ```
 
 ---
@@ -64,9 +80,8 @@ elmo-hikes/
 
 ## Acknowledgments
 
-- Trail data and images are for demonstration purposes only.
 - Code snippets were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- 
 
 ---
 
@@ -74,14 +89,12 @@ elmo-hikes/
 
 ### Limitations
 
-- Limited trail details (e.g., no live trail conditions).
+- 
 - Accessibility features can be further improved.
 
 ### Future Work
 
-- Implement map view and trailhead directions.
-- Add filtering and sorting options (e.g., by difficulty, distance).
-- Create a dark mode for better usability in low-light conditions.
+- 
 
 ---
 
