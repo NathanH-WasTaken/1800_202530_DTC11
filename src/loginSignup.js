@@ -33,24 +33,30 @@ function initAuthUI() {
     // --- Helper Functions ---
     // Toggle element visibility
     function setVisible(el, visible) {
-        el.classList.toggle('d-none', !visible);
+        if (!el) return;
+        if (visible) {
+            el.classList.remove('hidden');
+        } else {
+            el.classList.add('hidden');
+        }
     }
+
 
     // Show error message with accessibility and auto-hide
     let errorTimeout;
     function showError(msg) {
         alertEl.textContent = msg || '';
-        alertEl.classList.remove('d-none');
+        alertEl.classList.remove('hidden');
         clearTimeout(errorTimeout);
-        errorTimeout = setTimeout(hideError, 5000); // Auto-hide after 5s
+        errorTimeout = setTimeout(hideError, 5000);
     }
 
-    // Hide error message
     function hideError() {
-        alertEl.classList.add('d-none');
+        alertEl.classList.add('hidden');
         alertEl.textContent = '';
         clearTimeout(errorTimeout);
     }
+
 
     // Enable/disable submit button for forms
     function setSubmitDisabled(form, disabled) {
@@ -62,7 +68,7 @@ function initAuthUI() {
     // Toggle buttons
     toSignupBtn?.addEventListener('click', (e) => {
         e.preventDefault();
-        hideError();
+        console.log("Clicked signup link");
         setVisible(loginView, false);
         setVisible(signupView, true);
         signupView?.querySelector('input')?.focus();

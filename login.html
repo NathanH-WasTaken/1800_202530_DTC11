@@ -13,9 +13,10 @@
   <script type="module" src="/src/components/site-navbar.js"></script>
   <script type="module" src="/src/components/site-footer.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </head>
 
-<body>
+<body class="h-full bg-gray-900">
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
@@ -24,64 +25,86 @@
   <site-navbar></site-navbar>
 
   <!-- Main content goes here -->
-  <div class="container py-5" style="max-width: 420px;">
-    <!-- Alerts -->
-    <div id="authAlert" class="alert alert-danger d-none" role="alert"></div>
 
-    <!-- Login -->
-    <div id="loginView">
-      <h3 class="mb-3 text-center">Login</h3>
-      <form id="loginForm" novalidate>
-        <div class="mb-3">
-          <input type="email" id="loginEmail" class="form-control" placeholder="Email" required />
-        </div>
-        <div class="mb-3">
-          <input type="password" id="loginPassword" class="form-control" placeholder="Password" required />
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
-      </form>
-      <small class="d-block mt-3 text-center">
-        Don’t have an account?
-        <a href="#" id="toSignup">Sign up</a>
-      </small>
+  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm text-center">
+      <img src="images/HQLogo.png" alt="Logo" class="mx-auto h-10 w-auto" />
     </div>
 
-    <!-- Signup -->
-    <div id="signupView" class="d-none">
-      <h3 class="mb-3 text-center">Sign Up</h3>
-      <form id="signupForm" novalidate>
-        <div class="mb-3">
-          <input type="text" id="signupName" class="form-control" placeholder="First and Last Name"
-            aria-label="Full name" required />
+    <!-- Alerts -->
+    <div id="authAlert" class="hidden mt-4 text-center rounded-md bg-red-600 text-white px-4 py-2" role="alert"></div>
+
+    <!-- LOGIN VIEW -->
+    <div id="loginView" class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-white">
+        Login
+      </h2>
+
+      <form id="loginForm" novalidate class="mt-6 space-y-6">
+        <div>
+          <input type="email" id="loginEmail" placeholder="Email" required
+            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
         </div>
-        <div class="mb-3">
-          <input type="email" id="signupEmail" class="form-control" placeholder="Email" required />
+
+        <div>
+          <input type="password" id="loginPassword" placeholder="Password" required
+            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
         </div>
-        <div class="mb-3">
-          <input type="password" id="signupPassword" class="form-control" placeholder="Password" required />
-        </div>
-        <button type="submit" class="btn btn-success w-100">Create Account</button>
+
+        <button type="submit"
+          class="w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          Login
+        </button>
       </form>
-      <small class="d-block mt-3 text-center">
+
+      <p class="mt-6 text-center text-sm text-gray-400">
+        Don’t have an account?
+        <a href="#" id="toSignup" class="font-semibold text-indigo-400 hover:text-indigo-300">Sign up</a>
+      </p>
+    </div>
+
+    <!-- SIGNUP VIEW -->
+    <div id="signupView" class="hidden mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-white">
+        Create an account
+      </h2>
+
+      <form id="signupForm" novalidate class="mt-6 space-y-6">
+        <div>
+          <input type="text" id="signupName" placeholder="First and Last Name" aria-label="Full name" required
+            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+
+        <div>
+          <input type="email" id="signupEmail" placeholder="Email" required
+            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+
+        <div>
+          <input type="password" id="signupPassword" placeholder="Password" required
+            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+
+        <button type="submit"
+          class="w-full rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+          Create Account
+        </button>
+      </form>
+
+      <p class="mt-6 text-center text-sm text-gray-400">
         Already have an account?
-        <a href="#" id="toLogin">Login</a>
-      </small>
+        <a href="#" id="toLogin" class="font-semibold text-indigo-400 hover:text-indigo-300">Login</a>
+      </p>
     </div>
   </div>
-
-  <!-- our own footer goes here -->
   <site-footer></site-footer>
-  <!---------------------------------------------->
-  <!-- Your own JavaScript scripts go here      -->
-  <!---------------------------------------------->
 
 
-  <!-- Firebase and authentication related scripts -->
-  <!-- The order of loading matters -->
   <script type="module" src="/src/firebaseConfig.js"></script>
   <script type="module" src="/src/authentication.js"></script>
   <script type="module" src="/src/loginSignup.js"></script>
-
 </body>
+
+
 
 </html>
