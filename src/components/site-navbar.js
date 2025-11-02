@@ -13,7 +13,7 @@ class SiteNavbar extends HTMLElement {
           >
         </div>
         <div class="">
-          <a href="" class="inline-block hover:bg-gray-600 px-10 py-5"
+          <a href="mental.html" class="inline-block hover:bg-gray-600 px-10 py-5"
             >Mental</a
           >
         </div>
