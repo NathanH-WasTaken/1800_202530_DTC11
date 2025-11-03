@@ -37,5 +37,17 @@ function readQuote(day) {
   )
 }
 
-readQuote("monday")
+const dayNames = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+]
+
+const today = dayNames[new Date().getDay()]
+
+readQuote(today)
 showDashboard()
