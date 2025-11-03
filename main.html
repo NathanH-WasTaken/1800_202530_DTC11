@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Quest</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Health Quest</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./styles/style.css" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./styles/style.css" />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Web Components for shared navbar and footer -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+  </head>
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet" />
-  <!-- Web Components for shared navbar and footer -->
-  <script type="module" src="/src/components/site-navbar.js"></script>
-  <script type="module" src="/src/components/site-footer.js"></script>
-</head>
+  <body>
+    <!-- Navbar -->
+    <site-navbar></site-navbar>
 
-<body class="max-w-4xl mx-auto bg-slate-400">
-  <header>
-    <nav>
-      <div class="flex items-center justify-center gap-4">
-        <h1 class="text-3xl" id="jaro">Health Quest</h1>
-        <img src="images/HQLogo.png" class="h-10 w-10" alt="" />
+    <!-- Main -->
+    <main class="bg-gray-900">
+      <div class="text-white mx-auto py-20" id="mainDiv1">
+        <p class="text-8xl px-10">Welcome, <span id="username">User!</span></p>
       </div>
-    </nav>
-  </header>
-  <main></main>
-  <footer class="fixed bottom-0 left-1/2 text-center -translate-x-1/2">
-    <article class="flex gap-2">
-      <div><button>Home</button></div>
-      <div><button>Mental</button></div>
-      <div><button>Physical</button></div>
-      <div><button>Settings</button></div>
-    </article>
-  </footer>
-</body>
+    </main>
 
+    <!-- Footer -->
+    <site-footer></site-footer>
+  </body>
 </html>
