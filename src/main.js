@@ -1,7 +1,20 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap';
+import { onAuthReady } from "./authentication"
 
-function sayHello() {
-    
+function showDashboard() {
+  const nameElement = document.getElementById("user-name")
+
+  onAuthReady(async (user) => {
+    if (!user) {
+      location.href = "index.html"
+      return
+    }
+
+    const name = user.displayName || user.email
+
+    if (nameElement) {
+      nameElement.textContent = `${name}!`
+    }
+  })
 }
-// document.addEventListener('DOMContentLoaded', sayHello);
+
+showDashboard()

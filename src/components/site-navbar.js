@@ -5,7 +5,7 @@ class SiteNavbar extends HTMLElement {
     <nav class="bg-gray-500">
       <div class="flex text-[20px]">
         <div class="">
-          <img src="images/HQLogo.png" class="h-18 w-18" />
+          <a href="index.html"> <img src="images/HQLogo.png" class="h-18 w-18" /></a>
         </div>
         <div class="">
           <a href="index.html" class="inline-block hover:bg-gray-600 px-10 py-5"
