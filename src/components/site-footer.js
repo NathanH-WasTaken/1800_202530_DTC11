@@ -17,7 +17,6 @@ class SiteFooter extends HTMLElement {
       </div>
       <div class="basis-1/5">
         <ul class="flex flex-col gap-2 m-10">
-          <li><a href="./login.html">Sign in</a></li>
           <li><a href="#">FAQs</a></li>
           <li><a href="#">Terms & Conditions</a></li>
           <li><a href="#">Contact us</a></li>
