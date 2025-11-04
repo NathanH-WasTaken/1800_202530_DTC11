@@ -45,10 +45,10 @@ async function displayCardsDynamically() {
             newcard.querySelector('#workoutTitle').textContent = physical.name;
             newcard.querySelector('#description').textContent = physical.description;
             newcard.querySelector('#difficulty').textContent = physical.difficulty;
-            newcard.querySelector('#rating').textContent = physical.rating
+            newcard.querySelector('#rating').textContent = physical.rating;
 
             // 👇 ADD THIS LINE TO SET THE IMAGE SOURCE
-            newcard.querySelector('#workoutImg').src = `./images/${physical.code}.jpg`;
+            newcard.querySelector('#workoutImg').src = `./images/${physical.code}.png`;
 
             // Attach the new card to the container
             document.getElementById("hikes-go-here").appendChild(newcard);
