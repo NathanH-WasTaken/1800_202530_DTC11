@@ -13,6 +13,7 @@ class SiteNavbar extends HTMLElement {
   renderNavbar() {
     this.innerHTML = `
     <!-- Navbar -->
+  <div class="hidden sm:block">
     <nav class="bg-gray-500">
       <div class="flex text-[20px]">
         <div class="flex id="healthQuest"">
@@ -45,7 +46,31 @@ class SiteNavbar extends HTMLElement {
         </div>
       </div>
     </nav>
-    `
+  </div>
+
+<!-- Mobile NavBar -->
+ <!-- Mobile NavBar -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-500 z-50 h-28">
+  <nav class="flex justify-around items-center text-white text-lg">
+    <a href="index.html" class="flex flex-col items-center py-5 hover:bg-gray-600 w-full">
+      <img src="images/HQLogo.png" class="h-12 w-12 mb-2" />
+      <span>Home</span>
+    </a>
+    <a href="mental.html" class="flex flex-col items-center py-5 hover:bg-gray-600 w-full">
+      <img src="images/brain.png" class="h-12 w-12 mb-2" />
+      <span>Mental</span>
+    </a>
+    <a href="physical.html" class="flex flex-col items-center py-5 hover:bg-gray-600 w-full">
+      <img src="images/dumbell.png" class="h-12 w-12 mb-2" />
+      <span>Physical</span>
+    </a>
+    <a href="settings.html" class="flex flex-col items-center py-5 hover:bg-gray-600 w-full">
+      <img src="images/settings.png" class="h-12 w-12 mb-2" />
+      <span>Settings</span>
+    </a>
+  </nav>
+</div>
+   `
   }
 
   renderAuthControls() {
