@@ -4,13 +4,20 @@ import {
 import { db } from "./firebaseConfig.js";
 import { doc, onSnapshot, getDoc } from "firebase/firestore";
 import { collection, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+const auth = getAuth();
 
 function addPhysicalData() {
     const physicalRef = collection(db, "physical");
     console.log("Adding sample physical workouts data...");
     addDoc(physicalRef, {
-        code: "workout01", name: "Pushups", description: "A standard physical exercise to engage your chest, shoulder, and triceps.",
+        code: "pushups", name: "Pushups", description: "A standard physical exercise to engage your chest, shoulder, and triceps.",
         difficulty: "beginner", rating: "4/5", last_updated: serverTimestamp()
+    });
+
+    addDoc(physicalRef, {
+        code: "situps", name: "Situps", description: "A standard physical exercise to engage your core.",
+        difficulty: "beginner", rating: "2/5", last_updated: serverTimestamp()
     });
 }
 
@@ -49,13 +56,18 @@ async function displayCardsDynamically() {
 
             // 👇 ADD THIS LINE TO SET THE IMAGE SOURCE
             newcard.querySelector('#workoutImg').src = `./images/${physical.code}.png`;
+            newcard.querySelector("#pages").href = `physicalPages.html?docID=${doc.id}`;
 
             // Attach the new card to the container
             document.getElementById("hikes-go-here").appendChild(newcard);
+
+
         });
     } catch (error) {
         console.error("Error getting documents: ", error);
     }
+
+
 }
 
 // Call the function to display cards when the page loads
