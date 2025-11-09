@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Health Quest</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+
+    <!-- Other libraries go here -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./styles/style.css" />
+
+    <!-- Web Components for shared navbar and footer -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+</head>
+
+<body class="bg-gray-900">
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+    <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
+
+    <!-- Navbar -->
+    <site-navbar></site-navbar>
+
+    <!-- Main Content -->
+    <main class="max-w-[60%] mx-auto my-20">
+        <h1 id="physicalName" class="text-white text-center text-8xl mb-10">Loading...</h1>
+
+        <!-- Hike image -->
+        <img id="physicalImage" class="img-fluid rounded mt-3 d-block mx-auto" src="" alt="Workout image">
+
+        <!-- Write Review button (handled in JavaScript) -->
+        <div class="text-center text-2xl">
+            <button id="favoriteBtn" class="mt-20 border-solid bg-yellow-300 px-5 py-3">
+                Add To Favorites!
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <site-footer></site-footer>
+
+    <!-- Link to scripts of your own -->
+    <!-- <script type="module" src="./src/main.js"></script> -->
+    <script type="module" src="/src/physicalPages.js"></script>
+</body>
+
+<!-- Link to scripts of your own -->
+<!-- <script type="module" src="./src/main.js"></script> -->
+
+</html>
