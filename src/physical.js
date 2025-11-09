@@ -38,37 +38,63 @@ async function seedPhysical() {
 seedPhysical();
 
 async function displayCardsDynamically() {
-    let cardTemplate = document.getElementById("physicalCardTemplate");
+    const cardTemplate = document.getElementById("physicalCardTemplate");
     const physicalCollectionRef = collection(db, "physical");
 
-    try {
-        const querySnapshot = await getDocs(physicalCollectionRef);
-        querySnapshot.forEach(doc => {
-            // Clone the template
+    onSnapshot(physicalCollectionRef, (querySnapshot) => {
+        const container = document.getElementById("hikes-go-here");
+        container.innerHTML = ""; // clear old cards
+
+        querySnapshot.forEach((doc) => {
+            const physical = doc.data();
             let newcard = cardTemplate.content.cloneNode(true);
-            const physical = doc.data(); // Get physical data once
 
-            // Populate the card with workout data
-            newcard.querySelector('#workoutTitle').textContent = physical.name;
-            newcard.querySelector('#description').textContent = physical.description;
-            newcard.querySelector('#difficulty').textContent = physical.difficulty;
-            newcard.querySelector('#rating').textContent = physical.rating;
-
-            // 👇 ADD THIS LINE TO SET THE IMAGE SOURCE
-            newcard.querySelector('#workoutImg').src = `./images/${physical.code}.png`;
+            newcard.querySelector("#workoutTitle").textContent = physical.name;
+            newcard.querySelector("#description").textContent = physical.description;
+            newcard.querySelector("#difficulty").textContent = physical.difficulty;
+            newcard.querySelector("#rating").textContent = physical.rating;
+            newcard.querySelector("#workoutImg").src = `./images/${physical.code}.png`;
             newcard.querySelector("#pages").href = `physicalPages.html?docID=${doc.id}`;
 
-            // Attach the new card to the container
-            document.getElementById("hikes-go-here").appendChild(newcard);
-
-
+            container.appendChild(newcard);
         });
-    } catch (error) {
-        console.error("Error getting documents: ", error);
-    }
-
-
+    });
 }
 
 // Call the function to display cards when the page loads
 displayCardsDynamically();
+
+async function addNewPhysical(event) {
+    event.preventDefault();
+
+    // Grab values from the form
+    const name = document.getElementById("physicalNameInput").value.trim();
+    const description = document.getElementById("physicalDescInput").value.trim();
+    const difficulty = document.getElementById("physicalDifficultyInput").value;
+    const rating = document.getElementById("physicalRatingInput").value.trim();
+
+    if (!name || !description || !difficulty || !rating) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    try {
+        const physicalRef = collection(db, "physical");
+        await addDoc(physicalRef, {
+            name,
+            description,
+            difficulty,
+            rating,
+            last_updated: serverTimestamp()
+        });
+
+        alert("✅ Workout added!");
+        document.getElementById("createPhysicalForm").reset();
+    } catch (error) {
+        console.error("Error adding workout:", error);
+        alert("❌ Failed to add workout. Check console for details.");
+    }
+}
+
+// Attach listener
+document.getElementById("createPhysicalForm").addEventListener("submit", addNewPhysical);
