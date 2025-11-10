@@ -60,3 +60,38 @@ async function displayCardsDynamically() {
 
 // Call the function to display cards when the page loads
 displayCardsDynamically();
+
+async function addNewMental(event) {
+    event.preventDefault();
+
+    // Grab values from the form
+    const name = document.getElementById("mentalNameInput").value.trim();
+    const description = document.getElementById("mentalDescInput").value.trim();
+    const difficulty = document.getElementById("mentalDifficultyInput").value;
+    const rating = document.getElementById("mentalRatingInput").value.trim();
+
+    if (!name || !description || !difficulty || !rating) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    try {
+        const mentalRef = collection(db, "mental");
+        await addDoc(mentalRef, {
+            name,
+            description,
+            difficulty,
+            rating,
+            last_updated: serverTimestamp()
+        });
+
+        alert("✅ Workout added!");
+        document.getElementById("createMentalForm").reset();
+    } catch (error) {
+        console.error("Error adding workout:", error);
+        alert("❌ Failed to add workout. Check console for details.");
+    }
+}
+
+// Attach listener
+document.getElementById("createMentalForm").addEventListener("submit", addNewMental);
