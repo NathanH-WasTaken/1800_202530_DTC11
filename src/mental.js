@@ -12,6 +12,16 @@ function addMentalData() {
         code: "meditation", name: "Meditation", description: "A calm way to relax your body",
         length: "10 minutes", rating: "4/5", last_updated: serverTimestamp()
     });
+
+    addDoc(mentalRef, {
+        code: "boxBreathing", name: "Box Breathing", description: "A way to decrease your heart rate by controlling your breathing",
+        length: "5 minutes", rating: "5/5", last_updated: serverTimestamp()
+    });
+
+    addDoc(mentalRef, {
+        code: "journaling", name: "Journaling", description: "A way to express your thoughts and feelings on paper",
+        length: "30 minutes", rating: "3/5", last_updated: serverTimestamp()
+    });
 }
 
 async function seedMental() {
