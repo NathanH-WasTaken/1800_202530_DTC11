@@ -1,7 +1,7 @@
 class SiteFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-    <footer class="bg-gray-500 flex">
+    <footer class="hidden bg-gray-500 lg:flex">
       <div class="basis-4/5">
         <div class="flex mx-10 pt-10 pb-5 px-10 gap-4 items-center">
           <img class="w-15 h-15" src="./images/HQLogo.png" alt="" />
@@ -23,7 +23,7 @@ class SiteFooter extends HTMLElement {
         </ul>
       </div>
     </footer>
-    `
+    `;
   }
 }
-customElements.define("site-footer", SiteFooter)
+customElements.define("site-footer", SiteFooter);
