@@ -30,7 +30,22 @@
 
 
     <main class="max-w-[60%] mx-auto my-20">
-        <p class="text-white text-center text-8xl mb-10">Workouts</p>
+        <div class="flex justify-center items-center mb-10 space-x-10">
+            <p class="text-white text-8xl text-center">Workouts</p>
+
+            <!-- Filter Dropdown -->
+            <div class="flex items-center bg-gray-500 p-5 rounded">
+                <label for="difficultyFilter" class="text-black text-2xl mr-4">Filter:</label>
+                <select id="difficultyFilter" class="p-2 text-black text-xl rounded">
+                    <option value="all">All</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Workout Cards  -->
 
         <a href="">
             <div id="workoutCard" class="bg-gray-500 flex justify-between py-20 hover:bg-gray-600">
@@ -67,6 +82,8 @@
             </a>
         </template>
 
+        <!-- Create Workout Form -->
+
         <h2 class="text-6xl text-center text-white my-10">Create Your Own Workout</h2>
 
         <form id="createPhysicalForm" class="bg-gray-500 p-6 rounded text-white mb-8">
@@ -81,9 +98,9 @@
             <div class="mb-4">
                 <label class="block text-xl">Difficulty:</label>
                 <select id="physicalDifficultyInput" class="w-full p-2 text-black" required>
-                    <option value="beginner">Beginner</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="advanced">Advanced</option>
+                    <option value="Beginner">beginner</option>
+                    <option value="Intermediate">intermediate</option>
+                    <option value="Advanced">advanced</option>
                 </select>
             </div>
             <div class="mb-4">
