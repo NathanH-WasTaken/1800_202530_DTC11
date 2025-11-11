@@ -27,18 +27,75 @@
 
     <!-- Main -->
     <main class="max-w-[60%] mx-auto text-white">
-      <section class="flex flex-col gap-20 mx-auto py-20" id="mainDiv">
+      <section class="flex flex-col gap-5 mx-auto py-20" id="mainDiv">
         <h1 class="text-8xl">Welcome, <span id="user-name">User!</span></h1>
-        <p class="text-5xl pb-60">
+        <p class="text-4xl pb-10 py-2">
           Quote of the day:
-          <br />
           <br />
           <span id="quote-goes-here"></span>
         </p>
+        <article id="levelTracker"></article>
+        <!-- Temporary -->
+        <div class="mt-6">
+          <button
+            id="gainXPButton"
+            class="bg-green-500 hover:bg-green-700 text-black px-6 py-3 rounded-xl transition cursor-pointer"
+          >
+            +50 XP
+          </button>
+        </div>
+      </section>
+      <!-- Placeholder for on going exercise -->
+      <section id="currentExercise" class="pb-5 text-black">
+        <h1 class="text-5xl text-white my-5">Current Exercise</h1>
+        <div id="workoutCard" class="bg-gray-500 flex justify-between py-10">
+          <div id="left" class="pl-10">
+            <p class="text-5xl mb-5">
+              <b
+                ><u><span id="workoutTitle">Pushups</span></u></b
+              >
+            </p>
+            <div class="text-[5rem] font-mono" id="exerciseTimer">
+              00:00:00:00
+            </div>
+            <div id="controls" class="flex flex-row gap-2 text-xl my-5">
+              <button
+                id="startBtn"
+                onclick="start()"
+                class="block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700"
+              >
+                Start
+              </button>
+              <button
+                id="pauseBtn"
+                onclick="pause()"
+                class="block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700"
+              >
+                Pause
+              </button>
+              <button
+                id="finsihBtn"
+                onclick="finish()"
+                class="block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700"
+              >
+                Finish
+              </button>
+            </div>
+          </div>
+          <div id="right" class="pr-20 content-center">
+            <img width="300" id="workoutImg" src="./images/pushups.png" />
+          </div>
+        </div>
+      </section>
+      <section id="pastExercise" class="pb-5">
+        <h1 class="text-5xl">History</h1>
       </section>
     </main>
 
     <!-- Footer -->
     <site-footer></site-footer>
+
+    <!-- Scripts -->
+    <script src="/src/exerciseTimer.js"></script>
   </body>
 </html>
