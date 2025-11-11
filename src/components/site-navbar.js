@@ -16,7 +16,7 @@ class SiteNavbar extends HTMLElement {
   <div>
     <nav class="bg-gray-500">
       <div class="flex text-[20px]">
-        <div class="flex id="healthQuest"">
+        <div class="flex" id="healthQuest">
           <div class="">
             <a href="index.html"> <img src="images/HQLogo.png" class="h-18 w-18" /></a>
           </div>
@@ -75,7 +75,7 @@ class SiteNavbar extends HTMLElement {
 
   renderAuthControls() {
     const authControls = this.querySelector("#authControls");
-    const healthQuestLink = this.querySelector("#healthQuest");
+    const healthQuestLinks = this.querySelectorAll("#healthQuest a");
 
     onAuthStateChanged(auth, (user) => {
       let updatedAuthControl;
@@ -86,20 +86,14 @@ class SiteNavbar extends HTMLElement {
           id="signOutBtn"
           >LOG OUT</a
         >`;
-        // let updatedHealthQuestLink = `
-        //   <div class="">
-        //     <a href="main.html"> <img src="images/HQLogo.png" class="h-18 w-18" /></a>
-        //   </div>
-        //   <div class="">
-        //     <a href="main.html" class="inline-block hover:bg-gray-600 px-10 py-5"
-        //     ><b>Health Quest</b></a
-        //     >
-        //   </div>
-        // `
         authControls.innerHTML = updatedAuthControl;
         // healthQuestLink.innerHTML = updatedHealthQuestLink
         const signOutBtn = authControls.querySelector("#signOutBtn");
         signOutBtn.addEventListener("click", logoutUser);
+
+        healthQuestLinks.forEach((link) => {
+          link.setAttribute("href", "main.html");
+        });
       } else {
         updatedAuthControl = `<a
           href="./login.html"
