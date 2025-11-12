@@ -52,7 +52,7 @@
         </div>
 
         <template id="mentalCardTemplate">
-            <a href="">
+            <a href="#" id="pages">
                 <div id="mentalCard" class="bg-gray-500 flex justify-between py-20 hover:bg-gray-600">
                     <div id="left" class="pl-10">
                         <p class="text-5xl mb-5"><b><u><span id="mentalTitle"></span></u></b></p>
@@ -67,11 +67,11 @@
             </a>
         </template>
 
-        <h2 class="text-6xl text-center text-white my-10">Create Your Own Workout</h2>
+        <h2 class="text-6xl text-center text-white my-10">Create Your Mental Exercise</h2>
 
         <form id="createMentalForm" class="bg-gray-500 p-6 rounded text-white mb-8">
             <div class="mb-4">
-                <label class="block text-xl">Workout Name:</label>
+                <label class="block text-xl">Exercise Name:</label>
                 <input id="mentalNameInput" type="text" class="w-full p-2 text-black" required />
             </div>
             <div class="mb-4">
@@ -79,12 +79,8 @@
                 <textarea id="mentalDescInput" class="w-full p-2 text-black" required></textarea>
             </div>
             <div class="mb-4">
-                <label class="block text-xl">Difficulty:</label>
-                <select id="mentalDifficultyInput" class="w-full p-2 text-black" required>
-                    <option value="beginner">Beginner</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="advanced">Advanced</option>
-                </select>
+                <label class="block text-xl">Length Estimated:</label>
+                <input id="mentalLengthInput" type="text" class="w-full p-2 text-black" required />
             </div>
             <div class="mb-4">
                 <label class="block text-xl">Rating:</label>
@@ -92,7 +88,7 @@
                     required />
             </div>
 
-            <button type="submit" class="bg-yellow-400 text-black px-4 py-2 rounded">Add Workout</button>
+            <button type="submit" class="bg-yellow-400 text-black px-4 py-2 rounded">Add Exercise</button>
         </form>
     </main>
 
