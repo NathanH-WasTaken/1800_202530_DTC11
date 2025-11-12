@@ -56,6 +56,7 @@ async function displayCardsDynamically() {
             newcard.querySelector('#description').textContent = mental.description;
             newcard.querySelector('#length').textContent = mental.length;
             newcard.querySelector('#rating').textContent = mental.rating;
+            newcard.querySelector("#pages").href = `mentalPages.html?docID=${doc.id}`;
 
             // 👇 ADD THIS LINE TO SET THE IMAGE SOURCE
             newcard.querySelector('#mentalImg').src = `./images/${mental.code}.png`;
@@ -77,10 +78,10 @@ async function addNewMental(event) {
     // Grab values from the form
     const name = document.getElementById("mentalNameInput").value.trim();
     const description = document.getElementById("mentalDescInput").value.trim();
-    const difficulty = document.getElementById("mentalDifficultyInput").value;
+    const length = document.getElementById("mentalLengthInput").value;
     const rating = document.getElementById("mentalRatingInput").value.trim();
 
-    if (!name || !description || !difficulty || !rating) {
+    if (!name || !description || !length || !rating) {
         alert("Please fill in all fields.");
         return;
     }
@@ -90,16 +91,16 @@ async function addNewMental(event) {
         await addDoc(mentalRef, {
             name,
             description,
-            difficulty,
+            length,
             rating,
             last_updated: serverTimestamp()
         });
 
-        alert("✅ Workout added!");
+        alert("✅ Exercise added!");
         document.getElementById("createMentalForm").reset();
     } catch (error) {
         console.error("Error adding workout:", error);
-        alert("❌ Failed to add workout. Check console for details.");
+        alert("❌ Failed to add exercise. Check console for details.");
     }
 }
 
