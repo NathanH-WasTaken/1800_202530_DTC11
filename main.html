@@ -28,10 +28,10 @@
     <!-- Main -->
     <main class="max-w-[80%] lg:max-w-[60%] mx-auto text-white lg:pb-0 pb-28">
       <section class="flex flex-col gap-5 mx-auto py-10" id="mainDiv">
-        <h1 class="text-5xl lg:text-8xl">
+        <h1 class="text-5xl md:text-8xl">
           Welcome, <span id="user-name">User!</span>
         </h1>
-        <p class="text-2xl lg:text-4xl pb-5 py-2">
+        <p class="text-2xl md:text-4xl pb-5 py-2">
           Quote of the day:
           <br />
           <span id="quote-goes-here"></span>
@@ -50,24 +50,27 @@
       <!-- Placeholder for on going exercise -->
       <section id="currentExercise" class="pb-5 text-black">
         <h1
-          class="text-4xl lg:text-start text-center lg:text-5xl text-white my-5"
+          class="text-4xl md:text-start text-center md:text-5xl text-white my-5"
         >
           Current Exercise
         </h1>
         <div
           id="workoutCard"
-          class="bg-gray-500 flex justify-center lg:justify-between py-10"
+          class="bg-gray-500 flex justify-center md:justify-between py-10"
         >
-          <div id="left" class="lg:pl-10">
-            <p class="text-4xl lg:text-5xl mb-5 lg:text-start text-center">
+          <div id="left" class="md:pl-10">
+            <p class="text-4xl sm:text-5xl mb-5 md:text-start text-center">
               <b
                 ><u><span id="workoutTitle">Pushups</span></u></b
               >
             </p>
-            <div class="text-4xl lg:text-6xl font-mono" id="exerciseTimer">
+            <div class="text-4xl sm:text-6xl font-mono" id="exerciseTimer">
               00:00:00:00
             </div>
-            <div id="controls" class="flex flex-row gap-2 text-xl my-5">
+            <div
+              id="controls"
+              class="flex flex-row gap-2 text-xl justify-center md:justify-start my-5"
+            >
               <button
                 id="startBtn"
                 onclick="start()"
@@ -91,7 +94,7 @@
               </button>
             </div>
           </div>
-          <div id="right" class="pr-20 content-center lg:visible hidden">
+          <div id="right" class="pr-20 content-center hidden lg:flex">
             <img width="300" id="workoutImg" src="./images/pushups.png" />
           </div>
         </div>
