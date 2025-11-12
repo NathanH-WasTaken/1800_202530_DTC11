@@ -26,10 +26,12 @@
     <site-navbar></site-navbar>
 
     <!-- Main -->
-    <main class="max-w-[60%] mx-auto text-white">
-      <section class="flex flex-col gap-5 mx-auto py-20" id="mainDiv">
-        <h1 class="text-8xl">Welcome, <span id="user-name">User!</span></h1>
-        <p class="text-4xl pb-10 py-2">
+    <main class="max-w-[80%] lg:max-w-[60%] mx-auto text-white lg:pb-0 pb-28">
+      <section class="flex flex-col gap-5 mx-auto py-10" id="mainDiv">
+        <h1 class="text-5xl lg:text-8xl">
+          Welcome, <span id="user-name">User!</span>
+        </h1>
+        <p class="text-2xl lg:text-4xl pb-5 py-2">
           Quote of the day:
           <br />
           <span id="quote-goes-here"></span>
@@ -39,7 +41,7 @@
         <div class="mt-6">
           <button
             id="gainXPButton"
-            class="bg-green-500 hover:bg-green-700 text-black px-6 py-3 rounded-xl transition cursor-pointer"
+            class="bg-green-500 hover:bg-green-700 text-black px-6 py-2 rounded-xl transition cursor-pointer"
           >
             +50 XP
           </button>
@@ -47,15 +49,22 @@
       </section>
       <!-- Placeholder for on going exercise -->
       <section id="currentExercise" class="pb-5 text-black">
-        <h1 class="text-5xl text-white my-5">Current Exercise</h1>
-        <div id="workoutCard" class="bg-gray-500 flex justify-between py-10">
-          <div id="left" class="pl-10">
-            <p class="text-5xl mb-5">
+        <h1
+          class="text-4xl lg:text-start text-center lg:text-5xl text-white my-5"
+        >
+          Current Exercise
+        </h1>
+        <div
+          id="workoutCard"
+          class="bg-gray-500 flex justify-center lg:justify-between py-10"
+        >
+          <div id="left" class="lg:pl-10">
+            <p class="text-4xl lg:text-5xl mb-5 lg:text-start text-center">
               <b
                 ><u><span id="workoutTitle">Pushups</span></u></b
               >
             </p>
-            <div class="text-[5rem] font-mono" id="exerciseTimer">
+            <div class="text-4xl lg:text-6xl font-mono" id="exerciseTimer">
               00:00:00:00
             </div>
             <div id="controls" class="flex flex-row gap-2 text-xl my-5">
@@ -82,13 +91,13 @@
               </button>
             </div>
           </div>
-          <div id="right" class="pr-20 content-center">
+          <div id="right" class="pr-20 content-center lg:visible hidden">
             <img width="300" id="workoutImg" src="./images/pushups.png" />
           </div>
         </div>
       </section>
       <section id="pastExercise" class="pb-5">
-        <h1 class="text-5xl">History</h1>
+        <h1 class="text-4xl lg:text-5xl lg:text-start text-center">History</h1>
       </section>
     </main>
 

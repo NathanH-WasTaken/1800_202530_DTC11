@@ -31,7 +31,7 @@ function showDashboard() {
           earnedXP,
           createdAt: serverTimestamp(),
         });
-        console.log("🏋️ Workout saved to Firestore:", {
+        console.log("Workout saved to Firestore:", {
           title: document.getElementById("workoutTitle").textContent,
           duration,
           earnedXP,
