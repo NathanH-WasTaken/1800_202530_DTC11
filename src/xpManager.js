@@ -35,7 +35,7 @@ export class XPManager {
   renderBar() {
     if (!this.trackerContainer) return;
     this.trackerContainer.innerHTML = `
-      <div class="w-full mx-auto text-white text-4xl">
+      <div class="w-full mx-auto text-white text-2xl lg:text-4xl">
         <div class="flex justify-between mb-1">
           <span>Level <span id="levelNumber">${this.level}</span></span>
           <span><span id="currentXP">${
