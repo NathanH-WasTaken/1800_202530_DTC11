@@ -43,20 +43,39 @@ async function displayCardsDynamically() {
 
     onSnapshot(physicalCollectionRef, (querySnapshot) => {
         const container = document.getElementById("hikes-go-here");
-        container.innerHTML = ""; // clear old cards
+        const filter = document.getElementById("difficultyFilter");
 
-        querySnapshot.forEach((doc) => {
-            const physical = doc.data();
-            let newcard = cardTemplate.content.cloneNode(true);
+        function showCards(selectedDifficulty) {
+            container.innerHTML = ""; // clear old cards
 
-            newcard.querySelector("#workoutTitle").textContent = physical.name;
-            newcard.querySelector("#description").textContent = physical.description;
-            newcard.querySelector("#difficulty").textContent = physical.difficulty;
-            newcard.querySelector("#rating").textContent = physical.rating;
-            newcard.querySelector("#workoutImg").src = `./images/${physical.code}.png`;
-            newcard.querySelector("#pages").href = `physicalPages.html?docID=${doc.id}`;
+            querySnapshot.forEach((doc) => {
+                const physical = doc.data();
 
-            container.appendChild(newcard);
+                // Filter difficulty
+                if (selectedDifficulty !== "all" &&
+                    physical.difficulty.toLowerCase() !== selectedDifficulty.toLowerCase()) {
+                    return;
+                }
+
+
+                // Creating the cards
+                let newcard = cardTemplate.content.cloneNode(true);
+                newcard.querySelector("#workoutTitle").textContent = physical.name;
+                newcard.querySelector("#description").textContent = physical.description;
+                newcard.querySelector("#difficulty").textContent = physical.difficulty;
+                newcard.querySelector("#rating").textContent = physical.rating;
+                newcard.querySelector("#workoutImg").src = `./images/${physical.code}.png`;
+                newcard.querySelector("#pages").href = `physicalPages.html?docID=${doc.id}`;
+                container.appendChild(newcard);
+            });
+        }
+
+
+        showCards(filter.value);
+
+
+        filter.addEventListener("change", () => {
+            showCards(filter.value);
         });
     });
 }

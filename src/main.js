@@ -1,24 +1,58 @@
-import { db } from "./firebaseConfig.js"
-import { doc, onSnapshot } from "firebase/firestore"
-import { onAuthReady } from "./authentication"
+import { db } from "./firebaseConfig.js";
+import { doc, onSnapshot } from "firebase/firestore";
+import { onAuthReady } from "./authentication";
+import { XPManager } from "./xpManager.js";
 
 function showDashboard() {
-  const nameElement = document.getElementById("user-name")
+  const nameElement = document.getElementById("user-name");
 
   onAuthReady(async (user) => {
     if (!user) {
-      location.href = "index.html"
-      return
+      location.href = "index.html";
+      return;
     }
-    const name = user.displayName || user.email
+
+    const name = user.displayName || user.email;
     if (nameElement) {
-      nameElement.textContent = `${name}!`
+      nameElement.textContent = `${name}!`;
     }
-  })
+
+    const xp = new XPManager(user);
+    await xp.init();
+    window.xpManager = xp;
+
+    // Add finished workout to database
+    window.saveWorkoutToFirebase = async (duration, earnedXP) => {
+      try {
+        const workoutsRef = collection(db, "users", user.uid, "workouts");
+        await addDoc(workoutsRef, {
+          title: document.getElementById("workoutTitle").textContent,
+          duration,
+          earnedXP,
+          createdAt: serverTimestamp(),
+        });
+        console.log("🏋️ Workout saved to Firestore:", {
+          title: document.getElementById("workoutTitle").textContent,
+          duration,
+          earnedXP,
+        });
+      } catch (error) {
+        console.error("Error saving workout:", error);
+      }
+    };
+
+    // Placeholder for gaining XP
+    const gainXPButton = document.getElementById("gainXPButton");
+    if (gainXPButton) {
+      gainXPButton.addEventListener("click", () => {
+        xp.gainXP(50);
+      });
+    }
+  });
 }
 
 function readQuote(day) {
-  const quoteDocRef = doc(db, "quotes", day) // Get a reference to the document
+  const quoteDocRef = doc(db, "quotes", day); // Get a reference to the document
 
   onSnapshot(
     quoteDocRef,
@@ -26,15 +60,15 @@ function readQuote(day) {
       // Listen for real-time updates
       if (docSnap.exists()) {
         document.getElementById("quote-goes-here").innerHTML =
-          docSnap.data().quote
+          docSnap.data().quote;
       } else {
-        console.log("No such document!")
+        console.log("No such document!");
       }
     },
     (error) => {
-      console.error("Error listening to document: ", error)
+      console.error("Error listening to document: ", error);
     }
-  )
+  );
 }
 
 const dayNames = [
@@ -45,9 +79,9 @@ const dayNames = [
   "thursday",
   "friday",
   "saturday",
-]
+];
 
-const today = dayNames[new Date().getDay()]
+const today = dayNames[new Date().getDay()];
 
-readQuote(today)
-showDashboard()
+readQuote(today);
+showDashboard();
