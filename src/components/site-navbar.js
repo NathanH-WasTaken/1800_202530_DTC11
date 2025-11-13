@@ -12,45 +12,47 @@ class SiteNavbar extends HTMLElement {
 
   renderNavbar() {
     this.innerHTML = `
-    <!-- Navbar -->
-  <div>
-    <nav class="bg-gray-500">
-      <div class="flex text-[20px]">
-        <div class="flex" id="healthQuest">
-          <div class="">
-            <a href="index.html"> <img src="images/HQLogo.png" class="h-18 w-18" /></a>
-          </div>
-          <div class="">
-            <a href="index.html" class="inline-block hover:bg-gray-600 px-10 py-5"
-            ><b>Health Quest</b></a
-            >
-          </div>
-        </div>
-        <div class="hidden lg:block">
-          <a href="mental.html" class="inline-block hover:bg-gray-600 px-10 py-5"
-            >Mental</a
-          >
-        </div>
-        <div class="hidden lg:block">
-          <a href="physical.html" class="inline-block hover:bg-gray-600 px-10 py-5"
-            >Physical</a
-          >
-        </div>
-        <div class="ml-auto flex items-center">
-        <div id="authControls">
-           <!-- populated by function below -->
-        </div>
-        <a href="#" class="hidden lg:inline-block hover:bg-gray-600 px-5 py-3">
-          <img src="images/settings.png" class="h-10 w-10" />
-        </a>
-        </div>
-      </div>
-    </nav>
-  </div>
+    <!-- Large ScreenNavbar -->
+  <!-- Unified Health Quest Navigation -->
+<nav class="bg-white shadow dark:bg-gray-800">
+  <div class="container flex items-center justify-between p-6 mx-auto text-gray-600 dark:text-gray-300">
 
-<!-- Mobile NavBar -->
+    <!-- Logo and Brand -->
+    <div class="flex items-center space-x-4" id="healthQuest">
+      <a href="index.html">
+        <img src="images/HQlogoWhite.png" class="h-16 w-16" alt="Health Quest Logo" />
+      </a>
+      <a href="index.html" class="text-xl font-bold ">
+        Health Quest
+      </a>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="hidden lg:flex space-x-6 text-[18px] capitalize">
+      <a href="mental.html" class="rounded-lg border-3 px-8 py-1 hover:text-gray-200 hover:bg-blue-600
+      transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-160">
+        Mental
+      </a>
+      <a href="physical.html" class="rounded-lg border-3 px-8 py-1 hover:text-gray-200 hover:bg-blue-600
+      transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-160">
+        Physical
+      </a>
+    </div>
+    <div class="flex items-center space-x-4">
+      <div id="authControls">
+        <!-- populated by function below -->
+      </div>
+      <a href="#" class="hidden lg:inline-block hover:text-gray-800 dark:hover:text-gray-200">
+        <img src="images/settings.png" class="h-8 w-8" alt="Settings" />
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+
  <!-- Mobile NavBar -->
-<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-500 z-50 h-28 text-black">
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-300 z-50 h-28 text-black">
   <nav class="flex justify-around items-cent text-lg">
     <a href="main.html" class="flex flex-col items-center py-5 hover:bg-gray-600 w-full">
       <img src="images/home-icon.svg" class="h-12 w-12 mb-2" />
