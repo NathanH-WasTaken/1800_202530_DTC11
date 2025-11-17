@@ -1,7 +1,40 @@
 import { db } from "./firebaseConfig.js";
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot, collection, deleteDoc } from "firebase/firestore";
 import { onAuthReady } from "./authentication";
 import { XPManager } from "./xpManager.js";
+
+function loadCurrentExercises(user) {
+  const list = document.getElementById("currentExerciseList");
+  const template = document.getElementById("currentExerciseTemplate");
+
+  const ref = collection(db, "users", user.uid, "currentExercises");
+
+  onSnapshot(ref, (snapshot) => {
+    list.innerHTML = "";
+
+    snapshot.forEach((docSnap) => {
+      const w = docSnap.data();
+      const id = docSnap.id;
+
+      // Clone the original card
+      const card = template.content.cloneNode(true);
+
+      // Insert data
+      card.querySelector(".workoutTitle").textContent = w.name;
+      card.querySelector(".workoutImg").src = `./images/${w.code}.png`;
+
+      //Remove Button
+      const removeBtn = card.querySelector(".removeBtn");
+      removeBtn.addEventListener("click", async () => {
+        await deleteDoc(doc(db, "users", user.uid, "currentExercises", id));
+      });
+
+      list.appendChild(card);
+    });
+  });
+}
+
+
 
 function showDashboard() {
   const nameElement = document.getElementById("user-name");
@@ -11,6 +44,8 @@ function showDashboard() {
       location.href = "index.html";
       return;
     }
+
+    loadCurrentExercises(user);
 
     const name = user.displayName || user.email;
     if (nameElement) {

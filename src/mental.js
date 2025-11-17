@@ -96,7 +96,7 @@ async function addNewMental(event) {
             last_updated: serverTimestamp()
         });
 
-        alert("✅ Exercise added!");
+        alert("✅ Exercise added! (Refresh page)");
         document.getElementById("createMentalForm").reset();
     } catch (error) {
         console.error("Error adding workout:", error);
