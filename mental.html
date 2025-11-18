@@ -30,7 +30,20 @@
 
 
     <main class="max-w-[60%] mx-auto my-20">
-        <p class="text-white text-center text-8xl mb-10">Mental Exercises</p>
+        <div class="flex justify-center items-center mb-10 space-x-10">
+            <p class="text-white text-8xl text-center">Workouts</p>
+
+            <!-- Filter Dropdown -->
+            <div class="flex items-center bg-gray-500 p-5 rounded">
+                <label for="difficultyFilter" class="text-black text-2xl mr-4">Filter:</label>
+                <select id="difficultyFilter" class="p-2 text-black text-xl rounded">
+                    <option value="all">All</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+        </div>
 
         <a href="">
             <div id="" class="bg-gray-500 flex justify-between py-20 hover:bg-gray-600">
@@ -57,7 +70,7 @@
                     <div id="left" class="pl-10">
                         <p class="text-5xl mb-5"><b><u><span id="mentalTitle"></span></u></b></p>
                         <p id="description" class="text-2xl mb-10">This workout is about blah blah blah</p>
-                        <p class="text-3xl">Length: <span id="length"></span></p>
+                        <p class="text-3xl">Difficulty: <span id="difficulty"></span></p>
                         <p class="text-3xl">Rating: <span id="rating"></span></p>
                     </div>
                     <div id="right" class="pr-20 content-center">

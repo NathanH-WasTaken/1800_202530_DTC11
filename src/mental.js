@@ -57,7 +57,7 @@ async function displayCardsDynamically() {
             // Populate the card with mental data
             newcard.querySelector('#mentalTitle').textContent = mental.name;
             newcard.querySelector('#description').textContent = mental.description;
-            newcard.querySelector('#length').textContent = mental.length;
+            newcard.querySelector('#difficulty').textContent = mental.difficulty;
             newcard.querySelector('#rating').textContent = mental.rating;
             newcard.querySelector("#pages").href = `mentalPages.html?docID=${doc.id}`;
 
