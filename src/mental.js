@@ -81,7 +81,7 @@ async function addNewMental(event) {
     // Grab values from the form
     const name = document.getElementById("mentalNameInput").value.trim();
     const description = document.getElementById("mentalDescInput").value.trim();
-    const difficulty = document.getElementById("mentaldifficultyInput").value;
+    const difficulty = document.getElementById("mentalDifficultyInput").value;
     const rating = document.getElementById("mentalRatingInput").value.trim();
 
     if (!name || !description || !length || !rating) {
