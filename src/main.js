@@ -14,11 +14,17 @@ function loadPastExercises(user) {
 
     snapshot.forEach((docSnap) => {
       const w = docSnap.data();
+      const id = docSnap.id;
 
       const card = template.content.cloneNode(true);
 
       card.querySelector(".workoutTitle").textContent = w.name;
       card.querySelector(".workoutImg").src = `./images/${w.code}.png`;
+
+      const pastRemoveBtn = card.querySelector(".pastRemoveBtn");
+      pastRemoveBtn.addEventListener("click", async () => {
+        await deleteDoc(doc(db, "users", user.uid, "pastExercises", id));
+      });
 
       list.appendChild(card);
     });
