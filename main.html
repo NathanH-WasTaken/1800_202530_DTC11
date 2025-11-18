@@ -1,120 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Health Quest</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./styles/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Quest</title>
 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Web Components for shared navbar and footer -->
-    <script type="module" src="/src/components/site-navbar.js"></script>
-    <script type="module" src="/src/components/site-footer.js"></script>
-    <script type="module" src="/src/main.js"></script>
-  </head>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="./styles/style.css" />
 
-  <body class="bg-gray-900">
-    <!-- Navbar -->
-    <site-navbar></site-navbar>
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet" />
+  <!-- Web Components for shared navbar and footer -->
+  <script type="module" src="/src/components/site-navbar.js"></script>
+  <script type="module" src="/src/components/site-footer.js"></script>
+  <script type="module" src="/src/main.js"></script>
+</head>
 
-    <!-- Main -->
-    <main class="max-w-[80%] lg:max-w-[60%] mx-auto text-white lg:pb-36 pb-36">
-      <section class="flex flex-col gap-5 mx-auto py-10" id="mainDiv">
-        <h1 class="text-5xl md:text-8xl">
-          Welcome, <span id="user-name">User!</span>
-        </h1>
-        <p class="text-2xl md:text-4xl pb-5 py-2">
-          Quote of the day:
-          <br />
-          <span id="quote-goes-here"></span>
-        </p>
-        <article id="levelTracker"></article>
-        <!-- Temporary -->
-        <div class="mt-6">
-          <button
-            id="gainXPButton"
-            class="bg-green-500 hover:bg-green-700 text-black px-6 py-2 rounded-xl transition cursor-pointer"
-          >
-            +50 XP
-          </button>
-        </div>
-      </section>
-      <!-- Placeholder for on going exercise -->
-      <section id="currentExercise" class="pb-5 text-black">
-        <!-- Below is Nathan's template-->
+<body class="bg-gray-900">
+  <!-- Navbar -->
+  <site-navbar></site-navbar>
 
-        <div id="currentExerciseList" class="flex flex-col gap-5"></div>
-        <template id="currentExerciseTemplate">
-          <div
-            class="exerciseCard bg-gray-500 flex justify-center md:justify-between py-10 my-5"
-          >
-            <div class="md:pl-10">
-              <p class="text-4xl sm:text-5xl mb-5 md:text-start text-center">
-                <b
-                  ><u><span class="workoutTitle"></span></u
-                ></b>
-              </p>
+  <!-- Main -->
+  <main class="max-w-[80%] lg:max-w-[60%] mx-auto text-white lg:pb-36 pb-36">
+    <section class="flex flex-col gap-5 mx-auto py-10" id="mainDiv">
+      <h1 class="text-5xl md:text-8xl">
+        Welcome, <span id="user-name">User!</span>
+      </h1>
+      <p class="text-2xl md:text-4xl pb-5 py-2">
+        Quote of the day:
+        <br />
+        <span id="quote-goes-here"></span>
+      </p>
+      <article id="levelTracker"></article>
+      <!-- Temporary -->
+      <div class="mt-6">
+        <button id="gainXPButton"
+          class="bg-green-500 hover:bg-green-700 text-black px-6 py-2 rounded-xl transition cursor-pointer">
+          +50 XP
+        </button>
+      </div>
+    </section>
+    <!-- Placeholder for on going exercise -->
 
-              <div class="text-4xl sm:text-6xl font-mono exerciseTimer">
-                00:00:00:00
-              </div>
+    <!-- Below is Nathan's template-->
 
-              <div
-                class="flex flex-row gap-2 text-xl justify-center md:justify-start my-5"
-              >
-                <button
-                  class="startBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700"
-                >
-                  Start
-                </button>
+    <div id="currentExerciseList" class="flex flex-col gap-5 text-black"></div>
+    <template id="currentExerciseTemplate">
+      <div class="exerciseCard bg-gray-500 flex justify-center md:justify-between py-10 my-5">
+        <div class="md:pl-10">
+          <p class="text-4xl sm:text-5xl mb-5 md:text-start text-center">
+            <b><u><span class="workoutTitle"></span></u></b>
+          </p>
 
-                <button
-                  class="pauseBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700"
-                >
-                  Pause
-                </button>
-
-                <button
-                  class="finishBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700"
-                >
-                  Finish
-                </button>
-                <button
-                  class="removeBtn block border p-2 rounded-md hover:bg-red-600 shadow-sm cursor-pointer border-red-700 text-red-300"
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
-
-            <div class="pr-20 content-center hidden lg:flex">
-              <img width="300" class="workoutImg" />
-            </div>
+          <div class="text-4xl sm:text-6xl font-mono exerciseTimer">
+            00:00:00:00
           </div>
-        </template>
 
-        <!-- This is the end of Nathan's template / additions -->
-      </section>
+          <div class="flex flex-row gap-2 text-xl justify-center md:justify-start my-5">
+            <button
+              class="startBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700">
+              Start
+            </button>
 
-      <section id="pastExercise" class="pb-5">
-        <h1 class="text-4xl lg:text-5xl lg:text-start text-center">
-          Past Exercise
-        </h1>
-      </section>
-    </main>
+            <button
+              class="pauseBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700">
+              Pause
+            </button>
 
-    <!-- Footer -->
-    <site-footer></site-footer>
+            <button
+              class="finishBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700">
+              Finish
+            </button>
+            <button
+              class="removeBtn block border p-2 rounded-md hover:bg-red-600 shadow-sm cursor-pointer border-red-700 text-red-300">
+              Remove
+            </button>
+          </div>
+        </div>
 
-    <!-- Scripts -->
-    <script src="/src/exerciseTimer.js"></script>
-  </body>
+        <div class="pr-20 content-center hidden lg:flex">
+          <img width="300" class="workoutImg" />
+        </div>
+      </div>
+    </template>
+
+    <!-- This is the end of Nathan's template / additions -->
+    </section>
+
+    <section id="pastExercise" class="pb-5">
+      <h1 class="text-4xl lg:text-5xl lg:text-start text-center">
+        Past Exercise
+      </h1>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <site-footer></site-footer>
+
+  <!-- Scripts -->
+  <script src="/src/exerciseTimer.js"></script>
+</body>
+
 </html>
