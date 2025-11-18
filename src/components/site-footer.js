@@ -4,7 +4,7 @@ class SiteFooter extends HTMLElement {
     <footer class="hidden bg-gray-500 lg:flex">
       <div class="basis-4/5">
         <div class="flex mx-10 pt-10 pb-5 px-10 gap-4 items-center">
-          <img class="w-15 h-15" src="./images/HQLogo.png" alt="" />
+          <img class="w-15 h-15" src="./images/HQLogoWhite.png" alt="" />
           <h3 class="font-serif font-semibold">Health Quest</h3>
         </div>
         <div class="mx-20">
