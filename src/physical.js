@@ -97,6 +97,8 @@ async function addNewPhysical(event) {
         return;
     }
 
+    const code = name.toLowerCase().replace(/\s+/g, "_");
+
     try {
         const physicalRef = collection(db, "physical");
         await addDoc(physicalRef, {
@@ -104,6 +106,7 @@ async function addNewPhysical(event) {
             description,
             difficulty,
             rating,
+            code,
             last_updated: serverTimestamp()
         });
 
