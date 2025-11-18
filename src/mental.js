@@ -4,23 +4,26 @@ import {
 import { db } from "./firebaseConfig.js";
 import { doc, onSnapshot, getDoc } from "firebase/firestore";
 import { collection, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+
+const auth = getAuth();
 
 function addMentalData() {
     const mentalRef = collection(db, "mental");
     console.log("Adding sample mental workouts data...");
     addDoc(mentalRef, {
         code: "meditation", name: "Meditation", description: "A calm way to relax your body",
-        length: "10 minutes", rating: "4/5", last_updated: serverTimestamp()
+        difficulty: "beginner", rating: "4/5", last_updated: serverTimestamp()
     });
 
     addDoc(mentalRef, {
         code: "boxBreathing", name: "Box Breathing", description: "A way to decrease your heart rate by controlling your breathing",
-        length: "5 minutes", rating: "5/5", last_updated: serverTimestamp()
+        difficulty: "beginner", rating: "5/5", last_updated: serverTimestamp()
     });
 
     addDoc(mentalRef, {
         code: "journaling", name: "Journaling", description: "A way to express your thoughts and feelings on paper",
-        length: "30 minutes", rating: "3/5", last_updated: serverTimestamp()
+        difficulty: "beginner", rating: "3/5", last_updated: serverTimestamp()
     });
 }
 
@@ -47,7 +50,7 @@ async function displayCardsDynamically() {
     try {
         const querySnapshot = await getDocs(mentalCollectionRef);
         querySnapshot.forEach(doc => {
-            // Clone the template
+            // Clone the templatee
             let newcard = cardTemplate.content.cloneNode(true);
             const mental = doc.data(); // Get mental data once
 
@@ -58,7 +61,7 @@ async function displayCardsDynamically() {
             newcard.querySelector('#rating').textContent = mental.rating;
             newcard.querySelector("#pages").href = `mentalPages.html?docID=${doc.id}`;
 
-            // 👇 ADD THIS LINE TO SET THE IMAGE SOURCE
+            //  ADD THIS LINE TO SET THE IMAGE SOURCE
             newcard.querySelector('#mentalImg').src = `./images/${mental.code}.png`;
 
             // Attach the new card to the container
@@ -86,13 +89,15 @@ async function addNewMental(event) {
         return;
     }
 
+    const code = name.toLowerCase().replace(/\s+/g, "_");
     try {
         const mentalRef = collection(db, "mental");
         await addDoc(mentalRef, {
             name,
             description,
-            length,
+            difficulty,
             rating,
+            code,
             last_updated: serverTimestamp()
         });
 
