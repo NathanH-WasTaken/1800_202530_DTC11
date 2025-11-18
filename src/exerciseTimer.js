@@ -1,31 +1,59 @@
-const display = document.getElementById("exerciseTimer");
-let timer = null;
-let startTime = 0;
-let elapsedTime = 0;
-let isRunning = false;
+// Event listeners for timer buttons
+const exerciseList = document.getElementById("currentExerciseList");
+exerciseList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("startBtn")) {
+    start(e.target.closest(".exerciseCard"));
+  }
+  if (e.target.classList.contains("pauseBtn")) {
+    pause(e.target.closest(".exerciseCard"));
+  }
+  if (e.target.classList.contains("finishBtn")) {
+    finishWorkout(e.target.closest(".exerciseCard"));
+  }
+});
 
-function start() {
-  if (!isRunning) {
-    startTime = Date.now() - elapsedTime;
-    timer = setInterval(update, 10);
-    isRunning = true;
+// create timer variables
+function initCard(card) {
+  if (!card._timerInitialized) {
+    card.display = card.querySelector(".exerciseTimer");
+    card.timer = null;
+    card.startTime = 0;
+    card.elapsedTime = 0;
+    card.isRunning = false;
+    card._timerInitialized = true;
   }
 }
-function pause() {
-  if (isRunning) {
-    clearInterval(timer);
-    elapsedTime = Date.now() - startTime;
-    isRunning = false;
+
+// start timer
+function start(card) {
+  initCard(card);
+
+  if (!card.isRunning) {
+    card.startTime = Date.now() - card.elapsedTime;
+    card.timer = setInterval(() => update(card), 10);
+    card.isRunning = true;
   }
 }
-function finish() {
-  clearInterval(timer);
-  isRunning = false;
 
-  const totalSeconds = Math.floor(elapsedTime / 1000);
+// pause timer
+function pause(card) {
+  initCard(card);
 
-  console.log(`Workout finished! Duration: ${totalSeconds} seconds`);
+  if (card.isRunning) {
+    clearInterval(card.timer);
+    card.elapsedTime = Date.now() - card.startTime;
+    card.isRunning = false;
+  }
+}
 
+// finish timer and save to db
+function finishWorkout(card) {
+  initCard(card);
+
+  clearInterval(card.timer);
+  card.isRunning = false;
+
+  const totalSeconds = Math.floor(card.elapsedTime / 1000);
   const earnedXP = Math.floor(totalSeconds / 5);
 
   if (window.xpManager && earnedXP > 0) {
@@ -37,25 +65,28 @@ function finish() {
     window.saveWorkoutToFirebase(totalSeconds, earnedXP);
   }
 
-  elapsedTime = 0;
-  startTime = 0;
-  display.textContent = "00:00:00:00";
-  timer = null;
-  isRunning = false;
+  card.elapsedTime = 0;
+  card.startTime = 0;
+  card.display.textContent = "00:00:00:00";
+  card.timer = null;
+  card.isRunning = false;
 }
-function update() {
-  const currentTime = Date.now();
-  elapsedTime = currentTime - startTime;
 
-  let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
-  let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
-  let seconds = Math.floor((elapsedTime / 1000) % 60);
-  let miliseconds = Math.floor((elapsedTime % 1000) / 10);
+// update timer
+function update(card) {
+  initCard(card);
+
+  card.elapsedTime = Date.now() - card.startTime;
+
+  let hours = Math.floor(card.elapsedTime / (1000 * 60 * 60));
+  let minutes = Math.floor((card.elapsedTime / (1000 * 60)) % 60);
+  let seconds = Math.floor((card.elapsedTime / 1000) % 60);
+  let miliseconds = Math.floor((card.elapsedTime % 1000) / 10);
 
   hours = String(hours).padStart(2, "0");
   minutes = String(minutes).padStart(2, "0");
   seconds = String(seconds).padStart(2, "0");
   miliseconds = String(miliseconds).padStart(2, "0");
 
-  display.textContent = `${hours}:${minutes}:${seconds}:${miliseconds}`;
+  card.display.textContent = `${hours}:${minutes}:${seconds}:${miliseconds}`;
 }
