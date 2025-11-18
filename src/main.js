@@ -1,7 +1,29 @@
 import { db } from "./firebaseConfig.js";
-import { doc, onSnapshot, collection, deleteDoc } from "firebase/firestore";
+import { doc, onSnapshot, collection, deleteDoc, addDoc } from "firebase/firestore";
 import { onAuthReady } from "./authentication";
 import { XPManager } from "./xpManager.js";
+
+function loadPastExercises(user) {
+  const list = document.getElementById("pastExerciseList");
+  const template = document.getElementById("pastExerciseTemplate");
+
+  const ref = collection(db, "users", user.uid, "pastExercises");
+
+  onSnapshot(ref, (snapshot) => {
+    list.innerHTML = "";
+
+    snapshot.forEach((docSnap) => {
+      const w = docSnap.data();
+
+      const card = template.content.cloneNode(true);
+
+      card.querySelector(".workoutTitle").textContent = w.name;
+      card.querySelector(".workoutImg").src = `./images/${w.code}.png`;
+
+      list.appendChild(card);
+    });
+  });
+}
 
 function loadCurrentExercises(user) {
   const list = document.getElementById("currentExerciseList");
@@ -29,6 +51,21 @@ function loadCurrentExercises(user) {
         await deleteDoc(doc(db, "users", user.uid, "currentExercises", id));
       });
 
+      const finishBtn = card.querySelector(".finishBtn");
+      finishBtn.addEventListener("click", async () => {
+        const pastRef = collection(db, "users", user.uid, "pastExercises");
+
+        // Save to past exercises
+        await addDoc(pastRef, {
+          name: w.name,
+          code: w.code,
+          finishedAt: new Date(),
+        });
+
+        // Remove from current exercises
+        await deleteDoc(doc(db, "users", user.uid, "currentExercises", id));
+      });
+
       list.appendChild(card);
     });
   });
@@ -46,6 +83,7 @@ function showDashboard() {
     }
 
     loadCurrentExercises(user);
+    loadPastExercises(user);
 
     const name = user.displayName || user.email;
     if (nameElement) {
