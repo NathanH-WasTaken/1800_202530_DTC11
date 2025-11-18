@@ -44,56 +44,85 @@
       </div>
     </section>
     <!-- Placeholder for on going exercise -->
+    <section id="currentExercise" class="pb-5 text-black">
+      <h1 class="text-4xl lg:text-5xl lg:text-start text-center text-white">
+        Current Exercises
+      </h1>
+      <!-- Below is Nathan's template-->
 
-    <!-- Below is Nathan's template-->
+      <div id="currentExerciseList" class="flex flex-col gap-5"></div>
+      <template id="currentExerciseTemplate">
+        <div class="exerciseCard bg-gray-500 flex justify-center md:justify-between py-10 my-5">
+          <div class="md:pl-10">
+            <p class="text-4xl sm:text-5xl mb-5 md:text-start text-center">
+              <b><u><span class="workoutTitle"></span></u></b>
+            </p>
 
-    <div id="currentExerciseList" class="flex flex-col gap-5 text-black"></div>
-    <template id="currentExerciseTemplate">
-      <div class="exerciseCard bg-gray-500 flex justify-center md:justify-between py-10 my-5">
-        <div class="md:pl-10">
-          <p class="text-4xl sm:text-5xl mb-5 md:text-start text-center">
-            <b><u><span class="workoutTitle"></span></u></b>
-          </p>
+            <div class="text-4xl sm:text-6xl font-mono exerciseTimer">
+              00:00:00:00
+            </div>
 
-          <div class="text-4xl sm:text-6xl font-mono exerciseTimer">
-            00:00:00:00
+            <div class="flex flex-row gap-2 text-xl justify-center md:justify-start my-5">
+              <button
+                class="startBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700">
+                Start
+              </button>
+
+              <button
+                class="pauseBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700">
+                Pause
+              </button>
+
+              <button
+                class="finishBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700">
+                Finish
+              </button>
+              <button
+                class="removeBtn block border p-2 rounded-md hover:bg-red-600 shadow-sm cursor-pointer border-red-700 text-red-300">
+                Remove
+              </button>
+            </div>
           </div>
 
-          <div class="flex flex-row gap-2 text-xl justify-center md:justify-start my-5">
-            <button
-              class="startBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700">
-              Start
-            </button>
-
-            <button
-              class="pauseBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700">
-              Pause
-            </button>
-
-            <button
-              class="finishBtn block border p-2 rounded-md hover:bg-gray-600 shadow-sm cursor-pointer border-gray-700">
-              Finish
-            </button>
-            <button
-              class="removeBtn block border p-2 rounded-md hover:bg-red-600 shadow-sm cursor-pointer border-red-700 text-red-300">
-              Remove
-            </button>
+          <div class="pr-20 content-center hidden lg:flex">
+            <img width="300" class="workoutImg" />
           </div>
         </div>
+      </template>
 
-        <div class="pr-20 content-center hidden lg:flex">
-          <img width="300" class="workoutImg" />
-        </div>
-      </div>
-    </template>
-
-    <!-- This is the end of Nathan's template / additions -->
+      <!-- This is the end of Nathan's template / additions -->
     </section>
 
     <section id="pastExercise" class="pb-5">
       <h1 class="text-4xl lg:text-5xl lg:text-start text-center">
-        Past Exercise
+        Past Exercises
       </h1>
+
+      <div id="pastExerciseList">
+        <template id="pastExerciseTemplate">
+          <div class="exerciseCard bg-gray-500 flex justify-center md:justify-between py-10 my-5">
+            <div class="md:pl-10">
+              <p class="text-4xl sm:text-5xl mb-5 md:text-start text-center">
+                <b><u><span class="workoutTitle"></span></u></b>
+              </p>
+              <div class="flex">
+                <button
+                  class="addBtn block border p-2 rounded-md hover:bg-green-600 shadow-sm cursor-pointer border-green-700">
+                  Add to Current Exercises
+                </button>
+                <button
+                  class="pastRemoveBtn block border p-2 rounded-md hover:bg-red-600 shadow-sm cursor-pointer border-red-700">
+                  Remove from History
+                </button>
+              </div>
+            </div>
+
+            <div class="pr-20 content-center hidden lg:flex">
+              <img width="300" class="workoutImg" />
+            </div>
+          </div>
+        </template>
+      </div>
     </section>
   </main>
 
