@@ -7,13 +7,10 @@ class SiteNavbar extends HTMLElement {
     super();
     this.renderNavbar();
     this.renderAuthControls();
-
-    // Add bottom padding so content never scrolls under mobile navbar
-    document.body.classList.add("pb-32"); // matches h-32 (8rem)
   }
 
   renderNavbar() {
-    this.innerHTML = `
+    this.innerHTML = /*html*/ `
     <!-- Large Screen Navbar -->
     <nav class="bg-white shadow dark:bg-gray-800">
       <div class="container flex items-center justify-between p-6 mx-auto text-gray-600 dark:text-gray-300">
@@ -38,30 +35,30 @@ class SiteNavbar extends HTMLElement {
         <!-- Auth + Settings -->
         <div class="flex items-center space-x-4">
           <div id="authControls"></div>
-          <a href="#" class="hidden lg:inline-block hover:text-gray-800 dark:hover:text-gray-200">
-            <img src="images/settings.png" class="h-8 w-8" alt="Settings" />
+          <a href="settings.html" class="hidden lg:inline-block hover:text-gray-800 dark:hover:text-gray-200">
+            <img src="images/settings.svg" class="h-8 w-8" alt="Settings" />
           </a>
         </div>
       </div>
     </nav>
 
     <!-- Mobile NavBar -->
-    <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-300 z-50 h-32 text-black">
+    <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-500 z-50 h-26 text-black">
       <nav class="flex justify-around items-center text-sm sm:text-lg">
         <a href="main.html" class="flex flex-col items-center py-5 hover:bg-gray-600 flex-1">
           <img src="images/home-icon.svg" class="h-10 w-10 mb-1" />
           <span>Home</span>
         </a>
         <a href="mental.html" class="flex flex-col items-center py-5 hover:bg-gray-600 flex-1">
-          <img src="images/brain.png" class="h-10 w-10 mb-1" />
+          <img src="images/brain.svg" class="h-10 w-10 mb-1" />
           <span>Mental</span>
         </a>
         <a href="physical.html" class="flex flex-col items-center py-5 hover:bg-gray-600 flex-1">
-          <img src="images/dumbell.png" class="h-10 w-10 mb-1" />
+          <img src="images/dumbbell.svg" class="h-10 w-10 mb-1" />
           <span>Physical</span>
         </a>
         <a href="settings.html" class="flex flex-col items-center py-5 hover:bg-gray-600 flex-1">
-          <img src="images/settings.png" class="h-10 w-10 mb-1" />
+          <img src="images/settings.svg" class="h-10 w-10 mb-1" />
           <span>Settings</span>
         </a>
       </nav>

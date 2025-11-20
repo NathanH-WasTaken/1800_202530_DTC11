@@ -1,6 +1,6 @@
 class SiteFooter extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = `
+    this.innerHTML = /*html*/ `
     <footer class="hidden bg-gray-500 lg:flex">
       <div class="basis-4/5">
         <div class="flex mx-10 pt-10 pb-5 px-10 gap-4 items-center">
