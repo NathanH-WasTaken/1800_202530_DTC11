@@ -1,111 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>My BCIT Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/images/HQlogoWhite.png" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
 
-<head>
-  <title>My BCIT Project</title>
-  <meta name="comp1800 template" content="My 1800 App">
+    <!-- Web Components for shared navbar and footer layout -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <body class="h-full bg-gray-900">
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-  <!-- Web Components for shared navbar and footer layout -->
-  <script type="module" src="/src/components/site-navbar.js"></script>
-  <script type="module" src="/src/components/site-footer.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- our own navbar goes here -->
+    <site-navbar></site-navbar>
 
-</head>
+    <!-- Main content goes here -->
 
-<body class="h-full bg-gray-900">
-  <!------------------------------>
-  <!-- Your HTML Layout go here -->
-  <!------------------------------>
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm text-center">
+        <img
+          src="images/HQlogoWhite.png"
+          alt="Logo"
+          class="mx-auto h-auto w-1/3"
+        />
+      </div>
 
-  <!-- our own navbar goes here -->
-  <site-navbar></site-navbar>
+      <!-- Alerts -->
+      <div
+        id="authAlert"
+        class="hidden mt-4 text-center rounded-md bg-red-600 text-white px-4 py-2"
+        role="alert"
+      ></div>
 
-  <!-- Main content goes here -->
-
-  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm text-center">
-      <img src="images/HQlogoWhite.png" alt="Logo" class="mx-auto h-auto w-1/3" />
-    </div>
-
-    <!-- Alerts -->
-    <div id="authAlert" class="hidden mt-4 text-center rounded-md bg-red-600 text-white px-4 py-2" role="alert"></div>
-
-    <!-- LOGIN VIEW -->
-    <div id="loginView" class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-white">
-        Login
-      </h2>
-
-      <form id="loginForm" novalidate class="mt-6 space-y-6">
-        <div>
-          <input type="email" id="loginEmail" placeholder="Email" required
-            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-        </div>
-
-        <div>
-          <input type="password" id="loginPassword" placeholder="Password" required
-            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-        </div>
-
-        <button type="submit"
-          class="w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+      <!-- LOGIN VIEW -->
+      <div id="loginView" class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <h2
+          class="text-center text-2xl font-bold leading-9 tracking-tight text-white"
+        >
           Login
-        </button>
-      </form>
+        </h2>
 
-      <p class="mt-6 text-center text-sm text-gray-400">
-        Don’t have an account?
-        <a href="#" id="toSignup" class="font-semibold text-indigo-400 hover:text-indigo-300">Sign up</a>
-      </p>
+        <form id="loginForm" novalidate class="mt-6 space-y-6">
+          <div>
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="Email"
+              required
+              class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <div>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Password"
+              required
+              class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          >
+            Login
+          </button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-gray-400">
+          Don’t have an account?
+          <a
+            href="#"
+            id="toSignup"
+            class="font-semibold text-indigo-400 hover:text-indigo-300"
+            >Sign up</a
+          >
+        </p>
+      </div>
+
+      <!-- SIGNUP VIEW -->
+      <div
+        id="signupView"
+        class="hidden mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+      >
+        <h2
+          class="text-center text-2xl font-bold leading-9 tracking-tight text-white"
+        >
+          Create an account
+        </h2>
+
+        <form id="signupForm" novalidate class="mt-6 space-y-6">
+          <div>
+            <input
+              type="text"
+              id="signupName"
+              placeholder="First and Last Name"
+              aria-label="Full name"
+              required
+              class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <div>
+            <input
+              type="email"
+              id="signupEmail"
+              placeholder="Email"
+              required
+              class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <div>
+            <input
+              type="password"
+              id="signupPassword"
+              placeholder="Password"
+              required
+              class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+          >
+            Create Account
+          </button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-gray-400">
+          Already have an account?
+          <a
+            href="#"
+            id="toLogin"
+            class="font-semibold text-indigo-400 hover:text-indigo-300"
+            >Login</a
+          >
+        </p>
+      </div>
     </div>
+    <site-footer></site-footer>
 
-
-    <!-- SIGNUP VIEW -->
-    <div id="signupView" class="hidden mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 class="text-center text-2xl font-bold leading-9 tracking-tight text-white">
-        Create an account
-      </h2>
-
-      <form id="signupForm" novalidate class="mt-6 space-y-6">
-        <div>
-          <input type="text" id="signupName" placeholder="First and Last Name" aria-label="Full name" required
-            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-        </div>
-
-        <div>
-          <input type="email" id="signupEmail" placeholder="Email" required
-            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-        </div>
-
-        <div>
-          <input type="password" id="signupPassword" placeholder="Password" required
-            class="block w-full rounded-md bg-white/5 px-3 py-2 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-        </div>
-
-        <button type="submit"
-          class="w-full rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-          Create Account
-        </button>
-      </form>
-
-      <p class="mt-6 text-center text-sm text-gray-400">
-        Already have an account?
-        <a href="#" id="toLogin" class="font-semibold text-indigo-400 hover:text-indigo-300">Login</a>
-      </p>
-    </div>
-  </div>
-  <site-footer></site-footer>
-
-
-  <script type="module" src="/src/firebaseConfig.js"></script>
-  <script type="module" src="/src/authentication.js"></script>
-  <script type="module" src="/src/loginSignup.js"></script>
-</body>
-
-
-
+    <script type="module" src="/src/firebaseConfig.js"></script>
+    <script type="module" src="/src/authentication.js"></script>
+    <script type="module" src="/src/loginSignup.js"></script>
+  </body>
 </html>
