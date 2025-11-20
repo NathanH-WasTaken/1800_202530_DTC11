@@ -23,6 +23,9 @@ function loadPastExercises(user) {
 
       const pastRemoveBtn = card.querySelector(".pastRemoveBtn");
       pastRemoveBtn.addEventListener("click", async () => {
+        const sure = confirm("Are you sure you want to remove this from history?");
+        if (!sure) return;
+
         await deleteDoc(doc(db, "users", user.uid, "pastExercises", id));
       });
 
@@ -54,6 +57,9 @@ function loadCurrentExercises(user) {
       //Remove Button
       const removeBtn = card.querySelector(".removeBtn");
       removeBtn.addEventListener("click", async () => {
+        const sure = confirm("Are you sure you want to remove this exercise?");
+        if (!sure) return;
+
         await deleteDoc(doc(db, "users", user.uid, "currentExercises", id));
       });
 
