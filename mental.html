@@ -53,7 +53,7 @@
 
         <template id="mentalCardTemplate">
             <a href="#" id="pages">
-                <div id="mentalCard" class="bg-gray-500 flex justify-between py-20 hover:bg-gray-600">
+                <div id="mentalCard" class="bg-gray-500 flex justify-between py-20 hover:bg-gray-600 mb-6 rounded-lg">
                     <div id="left" class="pl-10">
                         <p class="text-5xl mb-5"><b><u><span id="mentalTitle"></span></u></b></p>
                         <p id="description" class="text-2xl mb-10">This workout is about blah blah blah</p>
@@ -67,28 +67,29 @@
             </a>
         </template>
 
+
         <h2 class="text-6xl text-center text-white my-10">Create Your Mental Exercise</h2>
 
         <form id="createMentalForm" class="bg-gray-500 p-6 rounded text-white mb-8">
             <div class="mb-4">
                 <label class="block text-xl">Exercise Name:</label>
-                <input id="mentalNameInput" type="text" class="w-full p-2 text-black" required />
+                <input id="mentalNameInput" type="text" class="w-full p-2 text-black border-1" required />
             </div>
             <div class="mb-4">
                 <label class="block text-xl">Description:</label>
-                <textarea id="mentalDescInput" class="w-full p-2 text-black" required></textarea>
+                <textarea id="mentalDescInput" class="w-full p-2 text-black border-1" required></textarea>
             </div>
             <div class="mb-4">
                 <label class="block text-xl">Difficulty:</label>
-                <select id="mentalDifficultyInput" class="w-full p-2 text-black" required>
-                    <option value="Beginner">beginner</option>
-                    <option value="Intermediate">intermediate</option>
-                    <option value="Advanced">advanced</option>
+                <select id="mentalDifficultyInput" class="w-full p-2 text-black border-1" required>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
                 </select>
             </div>
             <div class="mb-4">
                 <label class="block text-xl">Rating:</label>
-                <input id="mentalRatingInput" type="text" class="w-full p-2 text-black" placeholder="e.g. 4/5"
+                <input id="mentalRatingInput" type="text" class="w-full p-2 text-black border-1" placeholder="e.g. 4/5"
                     required />
             </div>
             <button type="submit" class="bg-yellow-400 text-black px-4 py-2 rounded">Add Exercise</button>
