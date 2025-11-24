@@ -13,7 +13,7 @@ class SiteNavbar extends HTMLElement {
     this.innerHTML = /*html*/ `
     <!-- Large Screen Navbar -->
     <nav class="bg-white shadow dark:bg-gray-800">
-      <div class="container flex items-center justify-between p-6 mx-auto text-gray-600 dark:text-gray-300">
+      <div class="flex items-center justify-between py-6 mx-10 text-gray-600 dark:text-gray-300">
         <!-- Logo -->
         <div class="flex items-center space-x-4" id="healthQuest">
           <a href="index.html">
@@ -34,7 +34,7 @@ class SiteNavbar extends HTMLElement {
 
         <!-- Auth + Settings -->
         <div class="flex items-center space-x-4">
-          <div id="authControls"></div>
+          <div id="authControls" class="hidden lg:flex"></div>
           <a href="settings.html" class="hidden lg:inline-block hover:text-gray-800 dark:hover:text-gray-200">
             <img src="images/settings.svg" class="h-8 w-8" alt="Settings" />
           </a>
@@ -69,6 +69,7 @@ class SiteNavbar extends HTMLElement {
   renderAuthControls() {
     const authControls = this.querySelector("#authControls");
     const healthQuestLinks = this.querySelectorAll("#healthQuest a");
+    const settingsButtons = this.querySelectorAll('a[href="settings.html"]');
 
     onAuthStateChanged(auth, (user) => {
       let updatedAuthControl;
@@ -85,11 +86,17 @@ class SiteNavbar extends HTMLElement {
         healthQuestLinks.forEach((link) => {
           link.setAttribute("href", "main.html");
         });
+        settingsButtons.forEach((btn) =>
+          btn.setAttribute("href", "settings.html")
+        );
       } else {
         updatedAuthControl = `
           <a href="./login.html" class="inline-block hover:bg-gray-600 px-5 py-3" id="loginBtn">LOG IN</a>
         `;
         authControls.innerHTML = updatedAuthControl;
+        settingsButtons.forEach((btn) =>
+          btn.setAttribute("href", "login.html")
+        );
       }
     });
   }
