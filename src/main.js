@@ -1,5 +1,5 @@
 import { db } from "./firebaseConfig.js";
-import { doc, onSnapshot, collection, deleteDoc, addDoc, updateDoc, increment, getDoc } from "firebase/firestore";
+import { doc, onSnapshot, collection, deleteDoc, addDoc, updateDoc, increment, getDoc, setDoc } from "firebase/firestore";
 import { onAuthReady } from "./authentication";
 import { XPManager } from "./xpManager.js";
 
@@ -78,27 +78,31 @@ function loadCurrentExercises(user) {
 
       const finishBtn = card.querySelector(".finishBtn");
       finishBtn.addEventListener("click", async () => {
-        const pastRef = collection(db, "users", user.uid, "pastExercises");
+        try {
+          const pastRef = collection(db, "users", user.uid, "pastExercises");
 
-        // Save to past exercises
-        await addDoc(pastRef, {
-          name: w.name,
-          code: w.code,
-          finishedAt: new Date(),
-        });
+          // Save to past exercises using the same ID
+          await setDoc(doc(pastRef, id), {
+            name: w.name,
+            code: w.code,
+            finishedAt: new Date(),
+          });
 
-        // Increment lifetime completed counter (create it if missing)
-        const userRef = doc(db, "users", user.uid);
-        const snap = await getDoc(userRef);
+          // Increment lifetime completions
+          const userRef = doc(db, "users", user.uid);
+          const snap = await getDoc(userRef);
 
-        if (!snap.exists() || snap.data().totalCompletions === undefined) {
-          await setDoc(userRef, { totalCompletions: 1, totalTimeSpent: 0 }, { merge: true });
-        } else {
-          await updateDoc(userRef, { totalCompletions: increment(1) });
+          if (!snap.exists() || snap.data().totalCompletions === undefined) {
+            await setDoc(userRef, { totalCompletions: 1, totalTimeSpent: 0 }, { merge: true });
+          } else {
+            await updateDoc(userRef, { totalCompletions: increment(1) });
+          }
+
+          // Remove from current exercises
+          await deleteDoc(doc(db, "users", user.uid, "currentExercises", id));
+        } catch (err) {
+          console.error("Error finishing exercise:", err);
         }
-
-        // Remove from current exercises
-        await deleteDoc(doc(db, "users", user.uid, "currentExercises", id));
       });
 
       list.appendChild(card);
