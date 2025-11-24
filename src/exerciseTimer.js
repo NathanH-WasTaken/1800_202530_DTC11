@@ -72,7 +72,8 @@ function finishWorkout(card) {
   startBtn.classList.remove("hidden");
 
   const totalSeconds = Math.floor(card.elapsedTime / 1000);
-  const earnedXP = Math.floor(totalSeconds / 5);
+  // XP earned per sec of exercise
+  const earnedXP = Math.floor(totalSeconds * 2);
 
   if (window.xpManager && earnedXP > 0) {
     window.xpManager.gainXP(earnedXP);
