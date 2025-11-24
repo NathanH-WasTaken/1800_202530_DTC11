@@ -1,148 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Health Quest</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/images/HQlogoWhite.png" />
-    <!-- Tailwind -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./styles/style.css" />
 
-    <!-- Web Components -->
-    <script type="module" src="/src/components/site-navbar.js"></script>
-    <script type="module" src="/src/components/site-footer.js"></script>
-  </head>
+<head>
+  <title>Health Quest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/images/HQlogoWhite.png" />
+  <!-- Tailwind -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="./styles/style.css" />
 
-  <body class="bg-gray-900">
-    <!-- Navbar -->
-    <site-navbar></site-navbar>
+  <!-- Web Components -->
+  <script type="module" src="/src/components/site-navbar.js"></script>
+  <script type="module" src="/src/components/site-footer.js"></script>
+</head>
 
-    <main class="w-full max-w-6xl mx-auto my-10 px-4 pb-10">
-      <!-- Title + Filter -->
-      <div
-        class="flex flex-col sm:flex-row justify-center items-center mb-10 space-y-4 sm:space-y-0 sm:space-x-10"
-      >
-        <p class="text-white text-4xl sm:text-6xl lg:text-8xl text-center">
-          Workouts
-        </p>
+<body class="bg-gray-900">
+  <!-- Navbar -->
+  <site-navbar></site-navbar>
 
-        <div class="flex items-center bg-gray-500 p-3 rounded w-full sm:w-auto">
-          <label
-            for="difficultyFilter"
-            class="text-black text-lg sm:text-2xl mr-2"
-            >Filter:</label
-          >
-          <select
-            id="difficultyFilter"
-            class="p-2 text-black text-base sm:text-xl rounded w-full sm:w-auto"
-          >
-            <option value="all">All</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-        </div>
+  <main class="w-full max-w-6xl mx-auto my-10 px-4 pb-10">
+
+    <!-- Form -->
+    <h2 class="text-3xl sm:text-4xl lg:text-6xl text-center text-white my-10">
+      Create Your Mental Exercise
+    </h2>
+
+    <form id="createMentalForm" class="bg-gray-500 p-6 rounded text-black mb-8">
+      <div class="mb-4">
+        <label class="block text-lg sm:text-xl">Exercise Name:</label>
+        <input id="mentalNameInput" type="text" class="w-full p-2 text-black border" required />
       </div>
-
-      <!-- Cards container -->
-      <div class="container-fluid bg-light text-dark p-5">
-        <div id="hikes-go-here" class="row"></div>
+      <div class="mb-4">
+        <label class="block text-lg sm:text-xl">Description:</label>
+        <textarea id="mentalDescInput" class="w-full p-2 text-black border" required></textarea>
       </div>
+      <div class="mb-4">
+        <label class="block text-lg sm:text-xl">Difficulty:</label>
+        <select id="mentalDifficultyInput" class="w-full p-2 text-black border" required>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-lg sm:text-xl">Rating:</label>
+        <input id="mentalRatingInput" type="text" class="w-full p-2 text-black border" placeholder="e.g. 4/5"
+          required />
+      </div>
+      <button type="submit" class="bg-yellow-400 text-black px-4 py-2 rounded">
+        Add Exercise
+      </button>
+    </form>
 
-      <!-- Card template -->
-      <template id="mentalCardTemplate">
-        <a href="#" id="pages">
-          <div
-            id="mentalCard"
-            class="bg-gray-500 flex flex-col sm:flex-row justify-between py-10 sm:py-20 hover:bg-gray-600 mb-6 rounded-lg"
-          >
-            <div id="left" class="px-6 sm:pl-10">
-              <p class="text-3xl sm:text-5xl mb-5 font-bold underline">
-                <span id="mentalTitle"></span>
-              </p>
-              <p id="description" class="text-lg sm:text-2xl mb-10">
-                This workout is about blah blah blah
-              </p>
-              <p class="text-xl sm:text-3xl">
-                Difficulty: <span id="difficulty"></span>
-              </p>
-              <p class="text-xl sm:text-3xl">
-                Rating: <span id="rating"></span>
-              </p>
-            </div>
-            <div id="right" class="sm:pr-20 flex justify-center sm:justify-end">
-              <img
-                width="150"
-                class="sm:w-[200px]"
-                id="mentalImg"
-                src="images/HQLogo.png"
-              />
-            </div>
+    <!-- Title + Filter -->
+    <div class="flex flex-col sm:flex-row justify-center items-center mb-10 space-y-4 sm:space-y-0 sm:space-x-10">
+      <p class="text-white text-4xl sm:text-6xl lg:text-8xl text-center">
+        Workouts
+      </p>
+
+      <div class="flex items-center bg-gray-500 p-3 rounded w-full sm:w-auto">
+        <label for="difficultyFilter" class="text-black text-lg sm:text-2xl mr-2">Filter:</label>
+        <select id="difficultyFilter" class="p-2 text-black text-base sm:text-xl rounded w-full sm:w-auto">
+          <option value="all">All</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Cards container -->
+    <div class="container-fluid bg-light text-dark p-5">
+      <div id="hikes-go-here" class="row"></div>
+    </div>
+
+    <!-- Card template -->
+    <template id="mentalCardTemplate">
+      <a href="#" id="pages">
+        <div id="mentalCard"
+          class="bg-gray-500 flex flex-col sm:flex-row justify-between py-10 sm:py-20 hover:bg-gray-600 mb-6 rounded-lg">
+          <div id="left" class="px-6 sm:pl-10">
+            <p class="text-3xl sm:text-5xl mb-5 font-bold underline">
+              <span id="mentalTitle"></span>
+            </p>
+            <p id="description" class="text-lg sm:text-2xl mb-10">
+              This workout is about blah blah blah
+            </p>
+            <p class="text-xl sm:text-3xl">
+              Difficulty: <span id="difficulty"></span>
+            </p>
+            <p class="text-xl sm:text-3xl">
+              Rating: <span id="rating"></span>
+            </p>
           </div>
-        </a>
-      </template>
-
-      <!-- Form -->
-      <h2 class="text-3xl sm:text-4xl lg:text-6xl text-center text-white my-10">
-        Create Your Mental Exercise
-      </h2>
-
-      <form
-        id="createMentalForm"
-        class="bg-gray-500 p-6 rounded text-black mb-8"
-      >
-        <div class="mb-4">
-          <label class="block text-lg sm:text-xl">Exercise Name:</label>
-          <input
-            id="mentalNameInput"
-            type="text"
-            class="w-full p-2 text-black border"
-            required
-          />
+          <div id="right" class="sm:pr-20 flex justify-center sm:justify-end">
+            <img width="150" class="sm:w-[200px]" id="mentalImg" src="images/HQLogo.png" />
+          </div>
         </div>
-        <div class="mb-4">
-          <label class="block text-lg sm:text-xl">Description:</label>
-          <textarea
-            id="mentalDescInput"
-            class="w-full p-2 text-black border"
-            required
-          ></textarea>
-        </div>
-        <div class="mb-4">
-          <label class="block text-lg sm:text-xl">Difficulty:</label>
-          <select
-            id="mentalDifficultyInput"
-            class="w-full p-2 text-black border"
-            required
-          >
-            <option value="Beginner">Beginner</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Advanced">Advanced</option>
-          </select>
-        </div>
-        <div class="mb-4">
-          <label class="block text-lg sm:text-xl">Rating:</label>
-          <input
-            id="mentalRatingInput"
-            type="text"
-            class="w-full p-2 text-black border"
-            placeholder="e.g. 4/5"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          class="bg-yellow-400 text-black px-4 py-2 rounded"
-        >
-          Add Exercise
-        </button>
-      </form>
-    </main>
+      </a>
+    </template>
+  </main>
 
-    <!-- Footer -->
-    <site-footer></site-footer>
+  <!-- Footer -->
+  <site-footer></site-footer>
 
-    <!-- Scripts -->
-    <script type="module" src="./src/mental.js"></script>
-  </body>
+  <!-- Scripts -->
+  <script type="module" src="./src/mental.js"></script>
+</body>
+
 </html>

@@ -84,7 +84,7 @@ async function addNewMental(event) {
     const difficulty = document.getElementById("mentalDifficultyInput").value;
     const rating = document.getElementById("mentalRatingInput").value.trim();
 
-    if (!name || !description || !length || !rating) {
+    if (!name || !description || !difficulty || !rating) {
         alert("Please fill in all fields.");
         return;
     }
