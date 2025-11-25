@@ -77,28 +77,38 @@
     <!-- Card template -->
     <template id="physicalCardTemplate">
       <a href="#" id="pages">
-        <div id="workoutCard"
-          class="bg-gray-500 flex flex-col sm:flex-row justify-between py-10 sm:py-20 hover:bg-gray-600 mb-6 rounded-lg">
-          <div id="left" class="px-6 sm:pl-10">
-            <p class="text-3xl sm:text-5xl mb-5 font-bold underline">
+        <div id="workoutCard" class="bg-gray-500 flex flex-row sm:flex-row justify-between items-center hover:bg-gray-600 mb-6 rounded-lg 
+               w-full h-32 sm:h-auto py-2 sm:py-10 sm:py-20">
+
+          <!-- Left side: text content -->
+          <div id="left" class="flex-1 px-4 sm:pl-10">
+            <!-- Title -->
+            <p class="text-lg sm:text-3xl md:text-5xl font-bold underline mb-2 sm:mb-5">
               <span id="workoutTitle"></span>
             </p>
-            <p id="description" class="text-lg sm:text-2xl mb-10">
+            <!-- Description -->
+            <p id="description" class="hidden sm:block text-sm sm:text-2xl mb-2 sm:mb-10">
               This workout is about blah blah blah
             </p>
-            <p class="text-xl sm:text-3xl">
+            <!-- Difficulty -->
+            <p class="text-sm sm:text-xl md:text-3xl mb-1 sm:mb-2">
               Difficulty: <span id="difficulty"></span>
             </p>
-            <p class="text-xl sm:text-3xl">
+            <!-- Rating -->
+            <p class="text-sm sm:text-xl md:text-3xl">
               Rating: <span id="rating"></span>
             </p>
           </div>
-          <div id="right" class="sm:pr-20 flex justify-center sm:justify-end">
-            <img width="150" class="sm:w-[200px]" id="workoutImg" src="images/HQLogo.png" />
+
+          <!-- Right side: image -->
+          <div id="right" class="flex-shrink-0 pr-4 sm:pr-20 flex justify-center sm:justify-end">
+            <img id="workoutImg" class="w-24 h-24 sm:w-[200px] sm:h-[200px] object-cover rounded"
+              src="images/HQLogo.png" />
           </div>
         </div>
       </a>
     </template>
+
   </main>
 
   <!-- Footer -->
