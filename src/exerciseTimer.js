@@ -28,10 +28,16 @@ function initCard(card) {
 function start(card) {
   initCard(card);
 
+  const startBtn = card.querySelector(".startBtn");
+  const pauseBtn = card.querySelector(".pauseBtn");
+
   if (!card.isRunning) {
     card.startTime = Date.now() - card.elapsedTime;
     card.timer = setInterval(() => update(card), 10);
     card.isRunning = true;
+
+    startBtn.classList.add("hidden");
+    pauseBtn.classList.remove("hidden");
   }
 }
 
@@ -39,10 +45,16 @@ function start(card) {
 function pause(card) {
   initCard(card);
 
+  const startBtn = card.querySelector(".startBtn");
+  const pauseBtn = card.querySelector(".pauseBtn");
+
   if (card.isRunning) {
     clearInterval(card.timer);
     card.elapsedTime = Date.now() - card.startTime;
     card.isRunning = false;
+
+    pauseBtn.classList.add("hidden");
+    startBtn.classList.remove("hidden");
   }
 }
 
@@ -53,8 +65,15 @@ function finishWorkout(card) {
   clearInterval(card.timer);
   card.isRunning = false;
 
+  const startBtn = card.querySelector(".startBtn");
+  const pauseBtn = card.querySelector(".pauseBtn");
+
+  pauseBtn.classList.add("hidden");
+  startBtn.classList.remove("hidden");
+
   const totalSeconds = Math.floor(card.elapsedTime / 1000);
-  const earnedXP = Math.floor(totalSeconds / 5);
+  // XP earned per sec of exercise
+  const earnedXP = Math.floor(totalSeconds * 2);
 
   if (window.xpManager && earnedXP > 0) {
     window.xpManager.gainXP(earnedXP);
@@ -69,7 +88,6 @@ function finishWorkout(card) {
   card.startTime = 0;
   card.display.textContent = "00:00:00:00";
   card.timer = null;
-  card.isRunning = false;
 }
 
 // update timer
