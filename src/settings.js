@@ -74,16 +74,19 @@ const logoutButton = document.getElementById("logoutButton");
 // Show modal
 deleteAccountButton.addEventListener("click", () => {
   deleteModal.classList.remove("hidden");
+  deleteModal.classList.add("flex");
 });
 
 // Hide modal
 cancelDelete.addEventListener("click", () => {
+  deleteModal.classList.remove("flex");
   deleteModal.classList.add("hidden");
 });
 
 // Click outside modal to close
 deleteModal.addEventListener("click", (e) => {
   if (e.target === deleteModal) {
+    deleteModal.classList.remove("flex");
     deleteModal.classList.add("hidden");
   }
 });

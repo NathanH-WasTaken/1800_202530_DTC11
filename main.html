@@ -94,12 +94,14 @@
                 ></b>
               </p>
 
+              <!-- Timer -->
               <div
                 class="text-4xl text-center sm:text-start sm:text-6xl font-mono exerciseTimer"
               >
                 00:00:00:00
               </div>
 
+              <!-- Timer buttons -->
               <div
                 class="flex flex-row gap-2 text-xl justify-center md:justify-start my-5"
               >
@@ -180,6 +182,36 @@
 
     <!-- Footer -->
     <site-footer></site-footer>
+
+    <!-- Workout Complete Modal -->
+    <div
+      id="workoutCompleteModal"
+      class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex justify-center items-center"
+    >
+      <div
+        class="bg-gray-800 text-white p-6 rounded-lg w-11/12 max-w-md text-center"
+      >
+        <h2 class="text-3xl font-bold text-green-400 mb-4">
+          Exercise Complete!
+        </h2>
+
+        <p class="text-xl mb-2">
+          You finished:
+          <span id="completedWorkoutName" class="font-bold"></span>
+        </p>
+
+        <p class="text-lg text-green-300">
+          +<span id="earnedXPValue"></span> XP Earned
+        </p>
+
+        <button
+          id="closeWorkoutCompleteBtn"
+          class="mt-6 w-full bg-emerald-500 hover:bg-emerald-700 rounded-lg py-2 cursor-pointer text-white text-lg"
+        >
+          Continue
+        </button>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script src="/src/exerciseTimer.js"></script>
