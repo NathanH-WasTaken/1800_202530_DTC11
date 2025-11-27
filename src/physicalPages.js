@@ -66,7 +66,10 @@ function addToCurrent() {
             addedAt: serverTimestamp()
         });
 
-        alert("✔ Added to Current Exercises!");
+        btn.textContent = "Exercise Added To Home!";
+        btn.classList.remove("bg-yellow-300", "hover:bg-yellow-700");
+        btn.classList.add("bg-green-500", "text-white", "cursor-not-allowed");
+        btn.disabled = true;
     });
 }
 
