@@ -64,28 +64,43 @@ saveButton.addEventListener("click", async () => {
   }
 });
 
+// Buttons and Modal Elements
 const deleteAccountButton = document.getElementById("deleteAccountButton");
+const deleteModal = document.getElementById("deleteModal");
+const cancelDelete = document.getElementById("cancelDelete");
+const confirmDelete = document.getElementById("confirmDelete");
 const logoutButton = document.getElementById("logoutButton");
 
-// Delete account handler
-deleteAccountButton.addEventListener("click", async () => {
+// Show modal
+deleteAccountButton.addEventListener("click", () => {
+  deleteModal.classList.remove("hidden");
+});
+
+// Hide modal
+cancelDelete.addEventListener("click", () => {
+  deleteModal.classList.add("hidden");
+});
+
+// Click outside modal to close
+deleteModal.addEventListener("click", (e) => {
+  if (e.target === deleteModal) {
+    deleteModal.classList.add("hidden");
+  }
+});
+
+// Confirm deletion
+confirmDelete.addEventListener("click", async () => {
   const user = auth.currentUser;
   if (!user) return;
 
-  const confirmation = confirm(
-    "Are you sure you want to delete your account? This cannot be undone."
-  );
-
-  if (!confirmation) return;
-
   try {
-    await deleteDoc(doc(db, "users", user.uid));
-    await deleteUser(user);
+    await deleteDoc(doc(db, "users", user.uid)); // remove user data
+    await deleteUser(user); // remove authentication
     alert("Your account has been deleted.");
     window.location.href = "index.html";
   } catch (error) {
     console.error("Error deleting account:", error);
-    alert("Error deleting account. You may need to log in again first.");
+    alert("Error deleting account. Please log in again and retry.");
   }
 });
 
