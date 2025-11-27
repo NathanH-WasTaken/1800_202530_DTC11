@@ -44,32 +44,28 @@ async function seedMental() {
 seedMental();
 
 async function displayCardsDynamically() {
-    let cardTemplate = document.getElementById("mentalCardTemplate");
+    const cardTemplate = document.getElementById("mentalCardTemplate");
     const mentalCollectionRef = collection(db, "mental");
+    const container = document.getElementById("hikes-go-here");
 
-    try {
-        const querySnapshot = await getDocs(mentalCollectionRef);
-        querySnapshot.forEach(doc => {
-            // Clone the templatee
+    onSnapshot(mentalCollectionRef, (querySnapshot) => {
+        container.innerHTML = ""; // Clear old cards each update
+
+        querySnapshot.forEach((doc) => {
+            const mental = doc.data();
+
             let newcard = cardTemplate.content.cloneNode(true);
-            const mental = doc.data(); // Get mental data once
 
-            // Populate the card with mental data
-            newcard.querySelector('#mentalTitle').textContent = mental.name;
-            newcard.querySelector('#description').textContent = mental.description;
-            newcard.querySelector('#difficulty').textContent = mental.difficulty;
-            newcard.querySelector('#rating').textContent = mental.rating;
+            newcard.querySelector("#mentalTitle").textContent = mental.name;
+            newcard.querySelector("#description").textContent = mental.description;
+            newcard.querySelector("#difficulty").textContent = mental.difficulty;
+            newcard.querySelector("#rating").textContent = mental.rating;
+            newcard.querySelector("#mentalImg").src = `./images/${mental.code}.png`;
             newcard.querySelector("#pages").href = `mentalPages.html?docID=${doc.id}`;
 
-            //  ADD THIS LINE TO SET THE IMAGE SOURCE
-            newcard.querySelector('#mentalImg').src = `./images/${mental.code}.png`;
-
-            // Attach the new card to the container
-            document.getElementById("hikes-go-here").appendChild(newcard);
+            container.appendChild(newcard);
         });
-    } catch (error) {
-        console.error("Error getting documents: ", error);
-    }
+    });
 }
 
 // Call the function to display cards when the page loads
@@ -101,7 +97,7 @@ async function addNewMental(event) {
             last_updated: serverTimestamp()
         });
 
-        alert("✅ Exercise added! (Refresh page)");
+        alert("✅ Exercise added!");
         document.getElementById("createMentalForm").reset();
     } catch (error) {
         console.error("Error adding workout:", error);

@@ -2,8 +2,7 @@ import {
     onAuthReady
 } from "./authentication.js"
 import { db } from "./firebaseConfig.js";
-import { doc, onSnapshot, getDoc } from "firebase/firestore";
-import { collection, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, getDocs, addDoc, serverTimestamp, onSnapshot } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 const auth = getAuth();
 
