@@ -82,6 +82,7 @@ function finishWorkout(card) {
       card.querySelector(".workoutTitle").textContent;
     document.getElementById("earnedXPValue").textContent = earnedXP;
     document.getElementById("workoutCompleteModal").classList.remove("hidden");
+    document.getElementById("workoutCompleteModal").classList.add("flex");
   }
 
   if (window.saveWorkoutToFirebase) {
@@ -121,11 +122,13 @@ const workoutCompleteModal = document.getElementById("workoutCompleteModal");
 // Close button
 closeWorkoutCompleteBtn.addEventListener("click", () => {
   workoutCompleteModal.classList.add("hidden");
+  workoutCompleteModal.classList.remove("flex");
 });
 
 // Clicking outside modal closes it
 workoutCompleteModal.addEventListener("click", (e) => {
   if (e.target === workoutCompleteModal) {
     workoutCompleteModal.classList.add("hidden");
+    workoutCompleteModal.classList.remove("flex");
   }
 });
