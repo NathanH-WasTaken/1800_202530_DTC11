@@ -42,8 +42,20 @@ Example:
 ```
 1800_202530_DTC11/
 ├── images/
+│   ├── boxBreathing.png
+│   ├── brain.png
+│   ├── brain.svg
+│   ├── dumbbell.svg
+│   ├── dumbell.png
+│   ├── home-icon.svg
+│   ├── HQfullLogo.png
 │   ├── HQLogo.png
+│   ├── HQlogoWhite.png
+│   ├── HQtext.png
+│   ├── journaling.png
+│   ├── leaderboard-star.svg
 │   ├── Login.jpg
+│   ├── settings.svg
 │   ├── NV01.jpg
 │   └── videoplayback.mp4
 ├── src/
@@ -51,8 +63,17 @@ Example:
 │   │    ├── site-footer.js
 │   │    ├── site-navbar.js
 │   ├── authentication.js
+|   ├── exerciseTimer.js
 │   ├── firebaseConfig.js
-│   └── main.js
+│   ├── leaderboard.js
+│   ├── loginSignup.js
+│   ├── main.js
+│   ├── mental.js
+│   ├── mentalPages.js
+│   ├── physical.js
+│   ├── physicalPages.js
+│   ├── settings.js
+│   └── xpManager.js
 │   
 ├── styles/
 │   └── style.css
@@ -61,10 +82,15 @@ Example:
 ├── index.html
 ├── login.html
 ├── main.html
+├── mental.html
+├── mentalPages.html
 ├── package-lock.json
 ├── package.json
 ├── physical.html
+├── physicalPages.html
 ├── README.md
+├── settings.html
+├── skeleton.html
 ├── tailwind.config.js
 ```
 
