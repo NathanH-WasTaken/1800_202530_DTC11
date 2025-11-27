@@ -77,7 +77,11 @@ function finishWorkout(card) {
 
   if (window.xpManager && earnedXP > 0) {
     window.xpManager.gainXP(earnedXP);
-    alert(`Workout complete! You earned ${earnedXP} XP`);
+    // Show workout completion modal
+    document.getElementById("completedWorkoutName").textContent =
+      card.querySelector(".workoutTitle").textContent;
+    document.getElementById("earnedXPValue").textContent = earnedXP;
+    document.getElementById("workoutCompleteModal").classList.remove("hidden");
   }
 
   if (window.saveWorkoutToFirebase) {
@@ -108,3 +112,20 @@ function update(card) {
 
   card.display.textContent = `${hours}:${minutes}:${seconds}:${miliseconds}`;
 }
+
+const closeWorkoutCompleteBtn = document.getElementById(
+  "closeWorkoutCompleteBtn"
+);
+const workoutCompleteModal = document.getElementById("workoutCompleteModal");
+
+// Close button
+closeWorkoutCompleteBtn.addEventListener("click", () => {
+  workoutCompleteModal.classList.add("hidden");
+});
+
+// Clicking outside modal closes it
+workoutCompleteModal.addEventListener("click", (e) => {
+  if (e.target === workoutCompleteModal) {
+    workoutCompleteModal.classList.add("hidden");
+  }
+});

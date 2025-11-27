@@ -19,18 +19,21 @@ const userRankDisplay = document.getElementById("userRank");
 // Show modal
 leaderboardBtn.addEventListener("click", () => {
   leaderboardModal.classList.remove("hidden");
+  leaderboardModal.classList.add("flex");
   loadLeaderboard();
 });
 
 // Close modal
 leaderboardClose.addEventListener("click", () => {
   leaderboardModal.classList.add("hidden");
+  leaderboardModal.classList.remove("flex");
 });
 
 // Close when clicking outside modal content
 leaderboardModal.addEventListener("click", (e) => {
   if (e.target === leaderboardModal) {
     leaderboardModal.classList.add("hidden");
+    leaderboardModal.classList.remove("flex");
   }
 });
 
