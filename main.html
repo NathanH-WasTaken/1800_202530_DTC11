@@ -1,131 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Health Quest</title>
-    <link rel="icon" type="image/png" href="/images/HQlogoWhite.png" />
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./styles/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Quest</title>
+  <link rel="icon" type="image/png" href="/images/HQlogoWhite.png" />
 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Web Components for shared navbar and footer -->
-    <script type="module" src="/src/components/site-navbar.js"></script>
-    <script type="module" src="/src/components/site-footer.js"></script>
-    <script type="module" src="/src/main.js"></script>
-  </head>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="./styles/style.css" />
 
-  <body class="bg-gray-900">
-    <!-- Navbar -->
-    <site-navbar></site-navbar>
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet" />
+  <!-- Web Components for shared navbar and footer -->
+  <script type="module" src="/src/components/site-navbar.js"></script>
+  <script type="module" src="/src/components/site-footer.js"></script>
+  <script type="module" src="/src/main.js"></script>
+</head>
 
-    <!-- Main -->
-    <main class="max-w-[80%] lg:max-w-6xl mx-auto text-white lg:pb-32 pb-20">
-      <section class="flex flex-col gap-5 mx-auto py-10" id="mainDiv">
-        <!-- Welcome & Quote of the day -->
-        <h1 class="text-5xl md:text-8xl">
-          Welcome, <span id="user-name">User!</span>
-        </h1>
-        <p class="text-2xl md:text-4xl pb-5 py-2">
-          Quote of the day:
-          <br />
-          <span id="quote-goes-here"></span>
-        </p>
-        <article id="levelTracker"></article>
+<body class="bg-gray-900">
+  <!-- Navbar -->
+  <site-navbar></site-navbar>
 
-        <!-- Total Time Spent and Completions -->
-        <p id="totalCompletions" class="text-white text-2xl mt-2"></p>
+  <!-- Main -->
+  <main class="max-w-[80%] lg:max-w-6xl mx-auto text-white lg:pb-32 pb-20">
+    <section class="flex flex-col gap-5 mx-auto py-10" id="mainDiv">
+      <!-- Welcome & Quote of the day -->
+      <h1 class="text-5xl md:text-8xl">
+        Welcome, <span id="user-name">User!</span>
+      </h1>
+      <p class="text-2xl md:text-4xl pb-5 py-2">
+        Quote of the day:
+        <br />
+        <span id="quote-goes-here"></span>
+      </p>
+      <article id="levelTracker"></article>
 
-        <!-- Leaderboard Button -->
-        <div class="mt-4">
-          <button
-            id="leaderboardBtn"
-            class="bg-blue-600 hover:cursor-pointer hover:bg-blue-900 text-white px-6 py-2 rounded-xl text-lg transition"
-          >
-            View Leaderboard
+      <!-- Total Time Spent and Completions -->
+      <p id="totalCompletions" class="text-white text-2xl mt-2"></p>
+
+      <!-- Leaderboard Button -->
+      <div class="mt-4 flex md:justify-start justify-center">
+        <button id="leaderboardBtn"
+          class="bg-blue-600 hover:cursor-pointer hover:bg-blue-900 text-white px-6 py-2 rounded-xl text-lg transition">
+          View Leaderboard
+        </button>
+      </div>
+
+      <!-- Leaderboard Modal -->
+      <div id="leaderboardModal"
+        class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm justify-center items-center z-50">
+        <div class="bg-gray-800 text-white p-6 rounded-lg w-11/12 max-w-md max-h-[70vh] overflow-y-auto">
+          <h2 class="text-2xl font-bold mb-4 text-center">Leaderboard</h2>
+          <ul id="leaderboardList" class="space-y-2 text-lg"></ul>
+          <p id="userRank" class="mt-4 text-center text-sm text-gray-300"></p>
+
+          <button id="closeLeaderboardBtn"
+            class="mt-6 w-full bg-rose-500 hover:bg-red-700 rounded-lg py-2 hover:cursor-pointer">
+            Close
           </button>
         </div>
+      </div>
+    </section>
 
-        <!-- Leaderboard Modal -->
-        <div
-          id="leaderboardModal"
-          class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm justify-center items-center z-50"
-        >
-          <div
-            class="bg-gray-800 text-white p-6 rounded-lg w-11/12 max-w-md max-h-[70vh] overflow-y-auto"
-          >
-            <h2 class="text-2xl font-bold mb-4 text-center">Leaderboard</h2>
-            <ul id="leaderboardList" class="space-y-2 text-lg"></ul>
-            <p id="userRank" class="mt-4 text-center text-sm text-gray-300"></p>
+    <!-- On going exercises -->
+    <section id="currentExercise" class="pb-5 text-black">
+      <h1 class="text-4xl lg:text-5xl lg:text-start text-center text-white">
+        Current Exercises
+      </h1>
 
-            <button
-              id="closeLeaderboardBtn"
-              class="mt-6 w-full bg-rose-500 hover:bg-red-700 rounded-lg py-2 hover:cursor-pointer"
-            >
-              Close
-            </button>
+      <!-- Below is Nathan's template-->
+      <div id="currentExerciseList" class="flex flex-col gap-5 rounded"></div>
+      <template id="currentExerciseTemplate">
+        <div class="exerciseCard bg-gray-500 flex justify-center md:justify-between py-10 my-5 rounded">
+          <div class="md:pl-10">
+            <p class="text-4xl sm:text-5xl mb-5 md:text-start text-center">
+              <b><u><span class="workoutTitle"></span></u></b>
+            </p>
+
+            <!-- Timer -->
+            <div class="text-4xl text-center sm:text-start sm:text-6xl font-mono exerciseTimer">
+              00:00:00:00
+            </div>
+
+            <!-- Timer buttons -->
+            <div class="flex flex-row gap-2 text-xl justify-center md:justify-start my-5">
+              <button
+                class="startBtn block border p-2 rounded-md bg-indigo-500 border-indigo-600 text-white hover:bg-indigo-600 shadow-sm cursor-pointer">
+                Start
+              </button>
+
+              <button
+                class="pauseBtn hidden border p-2 rounded-md bg-amber-500 border-amber-600 hover:bg-amber-600 text-white shadow-sm cursor-pointer">
+                Pause
+              </button>
+
+              <button
+                class="finishBtn block border p-2 rounded-md bg-emerald-500 border-emerald-700 text-white hover:bg-emerald-600 shadow-sm cursor-pointer">
+                Finish
+              </button>
+              <button
+                class="removeBtn block border p-2 rounded-md bg-rose-500 border-rose-600 text-white hover:bg-rose-600 shadow-sm cursor-pointer">
+                Remove
+              </button>
+            </div>
+          </div>
+
+          <div class="pr-20 content-center hidden lg:flex">
+            <img width="300" class="workoutImg" />
           </div>
         </div>
-      </section>
+      </template>
 
-      <!-- On going exercises -->
-      <section id="currentExercise" class="pb-5 text-black">
-        <h1 class="text-4xl lg:text-5xl lg:text-start text-center text-white">
-          Current Exercises
-        </h1>
+      <!-- This is the end of Nathan's template / additions -->
+    </section>
 
-        <!-- Below is Nathan's template-->
-        <div id="currentExerciseList" class="flex flex-col gap-5 rounded"></div>
-        <template id="currentExerciseTemplate">
-          <div
-            class="exerciseCard bg-gray-500 flex justify-center md:justify-between py-10 my-5 rounded"
-          >
+    <section id="pastExercise" class="pb-5 text-black">
+      <h1 class="text-4xl lg:text-5xl lg:text-start text-center text-white">
+        Past Exercises
+      </h1>
+
+      <div id="pastExerciseList">
+        <template id="pastExerciseTemplate">
+          <div class="exerciseCard bg-gray-500 flex justify-center md:justify-between py-10 my-5 rounded">
             <div class="md:pl-10">
               <p class="text-4xl sm:text-5xl mb-5 md:text-start text-center">
-                <b
-                  ><u><span class="workoutTitle"></span></u
-                ></b>
+                <b><u><span class="workoutTitle"></span></u></b>
               </p>
-
-              <!-- Timer -->
-              <div
-                class="text-4xl text-center sm:text-start sm:text-6xl font-mono exerciseTimer"
-              >
-                00:00:00:00
-              </div>
-
-              <!-- Timer buttons -->
-              <div
-                class="flex flex-row gap-2 text-xl justify-center md:justify-start my-5"
-              >
+              <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <button
-                  class="startBtn block border p-2 rounded-md bg-indigo-500 border-indigo-600 text-white hover:bg-indigo-600 shadow-sm cursor-pointer"
-                >
-                  Start
-                </button>
-
-                <button
-                  class="pauseBtn hidden border p-2 rounded-md bg-amber-500 border-amber-600 hover:bg-amber-600 text-white shadow-sm cursor-pointer"
-                >
-                  Pause
-                </button>
-
-                <button
-                  class="finishBtn block border p-2 rounded-md bg-emerald-500 border-emerald-700 text-white hover:bg-emerald-600 shadow-sm cursor-pointer"
-                >
-                  Finish
+                  class="addBtn px-4 py-2 font-semibold border rounded-md shadow-sm cursor-pointer border-green-700 bg-emerald-500 text-white hover:bg-emerald-600 transition-colors duration-200">
+                  Add to Current Exercises
                 </button>
                 <button
-                  class="removeBtn block border p-2 rounded-md bg-rose-500 border-rose-600 text-white hover:bg-rose-600 shadow-sm cursor-pointer"
-                >
-                  Remove
+                  class="pastRemoveBtn px-4 py-2 font-semibold border rounded-md shadow-sm cursor-pointer border-red-700 bg-rose-500 text-white hover:bg-rose-600 transition-colors duration-200">
+                  Remove from History
                 </button>
               </div>
             </div>
@@ -135,86 +146,40 @@
             </div>
           </div>
         </template>
-
-        <!-- This is the end of Nathan's template / additions -->
-      </section>
-
-      <section id="pastExercise" class="pb-5 text-black">
-        <h1 class="text-4xl lg:text-5xl lg:text-start text-center text-white">
-          Past Exercises
-        </h1>
-
-        <div id="pastExerciseList">
-          <template id="pastExerciseTemplate">
-            <div
-              class="exerciseCard bg-gray-500 flex justify-center md:justify-between py-10 my-5 rounded"
-            >
-              <div class="md:pl-10">
-                <p class="text-4xl sm:text-5xl mb-5 md:text-start text-center">
-                  <b
-                    ><u><span class="workoutTitle"></span></u
-                  ></b>
-                </p>
-                <div
-                  class="flex flex-col sm:flex-row justify-center items-center gap-4"
-                >
-                  <button
-                    class="addBtn px-4 py-2 font-semibold border rounded-md shadow-sm cursor-pointer border-green-700 bg-emerald-500 text-white hover:bg-emerald-600 transition-colors duration-200"
-                  >
-                    Add to Current Exercises
-                  </button>
-                  <button
-                    class="pastRemoveBtn px-4 py-2 font-semibold border rounded-md shadow-sm cursor-pointer border-red-700 bg-rose-500 text-white hover:bg-rose-600 transition-colors duration-200"
-                  >
-                    Remove from History
-                  </button>
-                </div>
-              </div>
-
-              <div class="pr-20 content-center hidden lg:flex">
-                <img width="300" class="workoutImg" />
-              </div>
-            </div>
-          </template>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <site-footer></site-footer>
-
-    <!-- Workout Complete Modal -->
-    <div
-      id="workoutCompleteModal"
-      class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex justify-center items-center"
-    >
-      <div
-        class="bg-gray-800 text-white p-6 rounded-lg w-11/12 max-w-md text-center"
-      >
-        <h2 class="text-3xl font-bold text-green-400 mb-4">
-          Exercise Complete!
-        </h2>
-
-        <p class="text-xl mb-2">
-          You finished:
-          <span id="completedWorkoutName" class="font-bold"></span>
-        </p>
-
-        <p class="text-lg text-green-300">
-          +<span id="earnedXPValue"></span> XP Earned
-        </p>
-
-        <button
-          id="closeWorkoutCompleteBtn"
-          class="mt-6 w-full bg-emerald-500 hover:bg-emerald-700 rounded-lg py-2 cursor-pointer text-white text-lg"
-        >
-          Continue
-        </button>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <!-- Scripts -->
-    <script src="/src/exerciseTimer.js"></script>
-    <script type="module" src="/src/leaderboard.js"></script>
-  </body>
+  <!-- Footer -->
+  <site-footer></site-footer>
+
+  <!-- Workout Complete Modal -->
+  <div id="workoutCompleteModal"
+    class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex justify-center items-center">
+    <div class="bg-gray-800 text-white p-6 rounded-lg w-11/12 max-w-md text-center">
+      <h2 class="text-3xl font-bold text-green-400 mb-4">
+        Exercise Complete!
+      </h2>
+
+      <p class="text-xl mb-2">
+        You finished:
+        <span id="completedWorkoutName" class="font-bold"></span>
+      </p>
+
+      <p class="text-lg text-green-300">
+        +<span id="earnedXPValue"></span> XP Earned
+      </p>
+
+      <button id="closeWorkoutCompleteBtn"
+        class="mt-6 w-full bg-emerald-500 hover:bg-emerald-700 rounded-lg py-2 cursor-pointer text-white text-lg">
+        Continue
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/src/exerciseTimer.js"></script>
+  <script type="module" src="/src/leaderboard.js"></script>
+</body>
+
 </html>
