@@ -21,12 +21,14 @@ async function displayPhysicalInfo() {
         const physical = physicalSnap.data();
         const name = physical.name;
         const code = physical.code;
+        const description = physical.description;
 
         // Update the page
         document.getElementById("physicalName").textContent = name;
         const img = document.getElementById("physicalImage");
         img.src = `./images/${code}.png`;
         img.alt = `${name} image`;
+        document.getElementById("physicalDescription").textContent = description;
     } catch (error) {
         console.error("Error loading physical workout:", error);
         document.getElementById("physicalName").textContent = "Error loading workout.";
