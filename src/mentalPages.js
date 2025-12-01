@@ -21,12 +21,14 @@ async function displayMentalInfo() {
         const mental = mentalSnap.data();
         const name = mental.name;
         const code = mental.code;
+        const description = mental.description;
 
         // Update the page
         document.getElementById("mentalName").textContent = name;
         const img = document.getElementById("mentalImage");
         img.src = `./images/${code}.png`;
         img.alt = `${name} image`;
+        document.getElementById("mentalDescription").textContent = description;
     } catch (error) {
         console.error("Error loading Mental workout:", error);
         document.getElementById("mentalName").textContent = "Error loading workout.";
