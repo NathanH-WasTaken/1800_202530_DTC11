@@ -44,7 +44,7 @@ Example:
 
 ```
 1800_202530_DTC11/
-├── images/
+├── public/images/
 │   ├── boxBreathing.png
 │   ├── brain.png
 │   ├── brain.svg
