@@ -33,10 +33,12 @@ Example:
 
 ## Usage
 
-1. Open your browser and visit `http://localhost:3000`.
-2. Browse the list of hiking trails displayed on the main page.
-3. Click the heart icon (or similar) to mark a trail as a favorite.
-4. View your favorite hikes in the favorites section.
+1. Open your browser and visit 'https://health-quest-9944d.web.app/'.
+2. Browse the list of mental and physical exercises on the physical and mental health pages.
+3. Click the cards you are interested in and add them to your Current Exercises list.
+4. Go to the Home Page and do the exercises you picked.
+5. Go to the mental / physical health pages and fill out the forms to show others exercises you love.
+6. Level up and climb the ranks of the leaderboard.
 
 ---
 
