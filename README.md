@@ -1,5 +1,5 @@
 # Health Quest
-![Health Quest](images/HQfullLogo.png)
+![Health Quest](public/images/HQfullLogo.png)
 ## Overview
 
 Health Quest is a client-side JavaScript web application that helps users grow and track there health both mentally and physically The app displays a curated list of Physical and Mental excercises each with details such as name,difficulty, and instructions . Users can browse the list and set there prefrences based on the level of difficulty they want to work on.
@@ -10,10 +10,13 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 
 ## Features
 
-- Create profile to set prefrences for workouts
-- Mark and unmark workouts as favorites
+- Add and remove exercises from current and past workout lists
 - View a personalized list workouts
 - Responsive design for desktop and mobile
+- Gamified XP and Leveling System that rewards exercise completion
+- Timer-based workout tracking with Start, Pause, and Finish controls
+- Real-time progress bar showing XP toward the next level
+- Leaderboard to compare user levels with others
 
 ---
 
@@ -100,14 +103,15 @@ Example:
 
 - **Nathan Hilario** - BCIT CST Student with a passion for badminton, anime, and valorant. Fun fact: I watched 100+ anime, and read 50+ manga/manhwa.
 - **Cedrik** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: loves photography and has wasted alot of money on diffrent gear.
-- **Kyle** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves fishing and working on my car.
+- **Kyle** - BCIT CST Student with a passion for fishing, camping, gaming, and coding. Fun fact: I love fishing and working on my car.
 
 ---
 
 ## Acknowledgments
 
-- Code snippets were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- 
+- Code snippets were adapted from resources such as [Firebase API References](https://firebase.google.com/docs/reference/js) and [Tailwind](https://tailwindcss.com/).
+- Workout images and icons sourced from free-use resources and licensed media where applicable.
+- Thanks to BCIT instructors and classmates for feedback during usability evaluations.
 
 ---
 
@@ -115,12 +119,13 @@ Example:
 
 ### Limitations
 
-- 
 - Accessibility features can be further improved.
+- Level and XP algorithm currently does not adapt to exercise difficulty beyond duration.
+- Real-time syncing of exercise progress across multiple devices is not implemented.
 
 ### Future Work
 
-- 
+- Integrate notifications, daily challenges, and streak rewards.
 
 ---
 
